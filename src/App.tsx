@@ -104,21 +104,21 @@ const App = () => {
             )}
 
             {qualityRoot && createPortal(
-                <div className="w-full max-w-[1200px] mx-auto">
+                <div className="w-full">
                     <QualityInspector />
                 </div>,
                 qualityRoot
             )}
 
             {linkedinRoot && createPortal(
-                <div className="w-full max-w-[1200px] mx-auto px-4">
+                <div className="w-full px-4">
                     <LinkedInProjects />
                 </div>,
                 linkedinRoot
             )}
 
             {designsRoot && createPortal(
-                <div className="w-full max-w-[1200px] mx-auto px-4 py-16">
+                <div className="w-full px-4 py-16">
                     <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Meus Trabalhos de Design
                     </h2>
@@ -140,7 +140,7 @@ const App = () => {
             )}
 
             {certificadosRoot && createPortal(
-                <div className="w-full max-w-[1200px] mx-auto px-4 py-12">
+                <div className="w-full px-4 py-12">
                     <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Meus Certificados
                     </h2>
@@ -150,7 +150,7 @@ const App = () => {
             )}
 
             {skillsRoot && createPortal(
-                <div className="w-full max-w-[1200px] mx-auto px-4 py-8">
+                <div className="w-full px-4 py-8">
                     <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Minhas Habilidades
                     </h2>

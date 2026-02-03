@@ -220,6 +220,8 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow-x: hidden;
+  /* Prevent leaking content */
 }
 
 @media (min-width: 768px) {
