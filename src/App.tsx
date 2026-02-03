@@ -28,7 +28,7 @@ const App = () => {
                 </h1>
                 <GradualSpacing
                     text="ASBEL NASCIMENTO"
-                    className="text-6xl md:text-8xl lg:text-9xl font-black text-center max-w-5xl text-white tracking-tighter drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]"
+                    className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-center max-w-5xl text-white tracking-tighter drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]"
                 />
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -59,7 +59,7 @@ const App = () => {
 
             {aboutRoot && createPortal(
                 <div className="w-full flex flex-col items-center max-w-4xl mx-auto px-4">
-                    <h2 className="text-4xl font-extrabold text-white mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Sobre Mim
                     </h2>
                     <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl max-h-[450px] overflow-y-auto custom-scrollbar">
@@ -113,7 +113,7 @@ const App = () => {
 
             {designsRoot && createPortal(
                 <div className="w-full flex flex-col items-center max-w-7xl mx-auto px-4 pt-16">
-                    <h2 className="text-4xl font-extrabold text-white mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Meus Trabalhos de Design
                     </h2>
                     <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
@@ -135,7 +135,7 @@ const App = () => {
 
             {certificadosRoot && createPortal(
                 <div className="w-full flex flex-col items-center max-w-7xl mx-auto px-4 py-12">
-                    <h2 className="text-4xl font-extrabold text-white mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Meus Certificados
                     </h2>
                     <CertificatesGrid />
@@ -145,7 +145,7 @@ const App = () => {
 
             {skillsRoot && createPortal(
                 <div className="w-full flex flex-col items-center">
-                    <h2 className="text-4xl font-extrabold text-white mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Minhas Habilidades
                     </h2>
                     <InteractiveSkills />

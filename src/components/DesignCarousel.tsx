@@ -23,7 +23,7 @@ const DesignCard = ({ item }: { item: DesignItem }) => {
     return (
         <motion.div
             whileHover={{ y: -10 }}
-            className="relative flex-none w-[280px] md:w-[320px] aspect-[4/5] bg-slate-900/40 rounded-3xl overflow-hidden border border-white/10 group cursor-pointer"
+            className="relative flex-none w-[260px] sm:w-[280px] md:w-[320px] aspect-[4/5] bg-slate-900/40 rounded-3xl overflow-hidden border border-white/10 group cursor-pointer"
             onClick={() => window.open(item.href, '_blank')}
         >
             <img
@@ -38,7 +38,7 @@ const DesignCard = ({ item }: { item: DesignItem }) => {
             {/* Content */}
             <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-white font-bold text-lg leading-tight group-hover:text-sky-400 transition-colors duration-300">
+                    <h3 className="text-white font-bold text-base md:text-lg leading-tight group-hover:text-sky-400 transition-colors duration-300">
                         {item.title}
                     </h3>
                     <ExternalLink className="w-4 h-4 text-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0 mt-1" />
@@ -67,7 +67,7 @@ export const DesignCarousel = () => {
     return (
         <div className="w-full relative group/carousel">
             {/* Navigation Buttons */}
-            <div className="absolute top-1/2 -left-4 -translate-y-1/2 z-20 md:opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">
+            <div className="absolute top-1/2 -left-4 -translate-y-1/2 z-20 opacity-0 md:group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-none md:pointer-events-auto">
                 <button
                     onClick={() => scroll('left')}
                     className="p-3 rounded-full bg-slate-900/80 border border-white/10 text-white hover:bg-sky-400 hover:text-slate-900 transition-all shadow-xl backdrop-blur-md"
@@ -76,7 +76,7 @@ export const DesignCarousel = () => {
                 </button>
             </div>
 
-            <div className="absolute top-1/2 -right-4 -translate-y-1/2 z-20 md:opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">
+            <div className="absolute top-1/2 -right-4 -translate-y-1/2 z-20 opacity-0 md:group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-none md:pointer-events-auto">
                 <button
                     onClick={() => scroll('right')}
                     className="p-3 rounded-full bg-slate-900/80 border border-white/10 text-white hover:bg-sky-400 hover:text-slate-900 transition-all shadow-xl backdrop-blur-md"

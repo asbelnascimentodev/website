@@ -66,8 +66,8 @@ const projects: Project[] = [
 
 const CaseStudy = ({ project }: { project: Project }) => (
     <div className="mb-32 last:mb-0">
-        <div className="text-center mb-16">
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        <div className="text-center mb-16 px-4">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
                 Case: {project.name}
             </h3>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
@@ -127,7 +127,7 @@ const CaseStudy = ({ project }: { project: Project }) => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="p-8 md:p-12 rounded-[2.5rem] bg-gradient-to-br from-slate-900/60 to-slate-950/40 border border-white/10 backdrop-blur-xl max-w-4xl mx-auto shadow-2xl"
+            className="p-6 md:p-12 rounded-3xl md:rounded-[2.5rem] bg-gradient-to-br from-slate-900/60 to-slate-950/40 border border-white/10 backdrop-blur-xl max-w-4xl mx-auto shadow-2xl"
         >
             <div className="flex flex-col md:flex-row gap-10 items-center">
                 <div className="flex-1">
@@ -174,8 +174,8 @@ export const LinkedInProjects = () => {
     return (
         <div className="w-full py-24 flex flex-col items-center">
             <div className="max-w-7xl mx-auto px-4 w-full">
-                <div className="text-center mb-24">
-                    <h2 className="text-5xl md:text-7xl font-black text-white mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-sky-400/50">
+                <div className="text-center mb-24 px-4">
+                    <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-sky-400/50">
                         Projetos LinkedIn
                     </h2>
                     <div className="h-1.5 w-32 bg-sky-500 mx-auto rounded-full mb-8 shadow-[0_0_20px_rgba(14,165,233,0.6)]" />

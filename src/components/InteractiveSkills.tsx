@@ -34,7 +34,7 @@ export function InteractiveSkills() {
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
-                    "group relative w-full flex items-center justify-between p-6 rounded-2xl transition-all duration-500",
+                    "group relative w-full flex items-center justify-between p-4 md:p-6 rounded-2xl transition-all duration-500",
                     "bg-slate-900/50 backdrop-blur-xl border border-white/10 overflow-hidden",
                     "hover:border-sky-400/50 hover:shadow-[0_0_30px_rgba(56,189,248,0.2)]"
                 )}
@@ -44,13 +44,13 @@ export function InteractiveSkills() {
                 {/* Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                <div className="flex items-center gap-4 relative z-10">
-                    <div className="p-3 bg-sky-500/20 rounded-xl text-sky-400 group-hover:scale-110 transition-transform duration-300">
-                        <Cpu className="w-6 h-6" />
+                <div className="flex items-center gap-3 md:gap-4 relative z-10">
+                    <div className="p-2.5 md:p-3 bg-sky-500/20 rounded-xl text-sky-400 group-hover:scale-110 transition-transform duration-300">
+                        <Cpu className="w-5 h-5 md:w-6 md:h-6" />
                     </div>
                     <div className="text-left">
-                        <h3 className="text-xl font-bold text-white tracking-tight">Explorar Minhas Habilidades</h3>
-                        <p className="text-slate-400 text-sm">Clique para expandir meu stack tecnológico</p>
+                        <h3 className="text-base md:text-xl font-bold text-white tracking-tight">Explorar Minhas Habilidades</h3>
+                        <p className="text-slate-400 text-xs md:text-sm">Clique para ver meu stack</p>
                     </div>
                 </div>
 
