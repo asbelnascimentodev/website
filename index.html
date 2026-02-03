@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASBEL NASCIMENTO</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="java.js">
+    
+</head>
+
+
+
+
+<script>// --- CARROSSEL AUTOMÁTICO DE DESIGNS (galeria-design) ---
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const galeriaDesigns = document.querySelector('.galeria-designs');
+        const designItems = document.querySelectorAll('.design-item');
+    
+        // Verifica se a galeria existe e se há itens
+        if (galeriaDesigns && designItems.length > 0) {
+            let currentIndex = 0;
+            const totalItems = designItems.length;
+            // Tempo em milissegundos (5000ms = 5 segundos)
+            const delay = 1000; 
+            
+            // Define a largura de um item mais a margem (para rolagem precisa)
+            const itemWidth = designItems[0].offsetWidth + 40; // 20px é o margin-right definido no CSS
+    
+            function nextSlide() {
+                currentIndex++;
+                
+                // Se chegou ao final, volta para o primeiro
+                if (currentIndex >= totalItems) {
+                    currentIndex = 0;
+                    // Para uma transição instantânea de volta ao início
+                    galeriaDesigns.scrollLeft = 0; 
+                } else {
+                    // Rola para a posição do próximo item
+                    galeriaDesigns.scrollLeft = currentIndex * itemWidth; 
+                }
+            }
+    
+            // Inicia o carrossel automático
+            let intervalId = setInterval(nextSlide, delay);
+    
+            // Opcional: Pausa o carrossel quando o usuário interage (hover)
+            galeriaDesigns.addEventListener('mouseenter', () => {
+                clearInterval(intervalId);
+            });
+    
+            galeriaDesigns.addEventListener('mouseleave', () => {
+                intervalId = setInterval(nextSlide, delay);
+            });
+        }
+    });</script>
+<body>
+
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                
+                <li><a href="#sobre">Sobre</a></li>
+               
+                <li><a href="#skills">Skills</a></li>
+               
+                <li><a href="#certificados">Certificações</a></li>
+                
+                <li><a href="#projetos">Projetos</a></li>
+                
+                <li> <a href="Curriculo/RESUME ASBEL NASCIMENTO.pdf" class="">Download my Resume</a>
+                   
+                <li> <a href="Curriculo/ASBEL SILAS CURRICULO (2025).pdf" class="">Baixe me curriculo!</a>
+                </ul>
+                
+        </nav>
+    </header>
+
+    <section id="home" class="secao">
+        <h1>Olá, eu sou <strong id="NAME-HOME">ASBEL NASCIMENTO</strong> </h1>
+        <p>Estudante de Desenvolvimento Web JR | Designer | FREELANCER | INSPETOR DE QUALIDADE</p>
+        <div class="home-actions">
+            <a href="#sobre" class="botao">Saiba Mais Sobre Mim</a>
+            <a href="https://www.linkedin.com/in/asbeldev/" class="redes-sociais">LinkedIn</a>
+            <a href="https://www.instagram.com/eubebel.ofc/" class="redes-sociais">Instagram</a>
+          </div>
+
+        
+        
+    </section>
+
+    <div class="espaco"></div>
+
+    <section id="sobre" class="secao">
+        <h2>Sobre Mim</h2>
+        <p class="sobre-card">
+            <strong>Meu nome é Asbel Nascimento, Atualmente gerencio uma rede social do instagram de BOLOS ("didi_bolosofc"),com alguns videos e posts feito por mim. Também sou um Estudante de Desenvolvimento Web Júnior com grande interesse por tecnologia, design e inovação. Atualmente, possuo conhecimentos básicos em HTML, CSS, JavaScript, UX Design, python e Redes de Computadores e Lógica de Programação — áreas que venho aprimorando constantemente por meio de cursos e prática diária.
+
+            Tenho um inglês intermediário, o que me permite me comunicar bem e manter conversas com estrangeiros sobre diversos assuntos, especialmente voltados à tecnologia.
+
+            Além da área técnica, também sou apaixonado por música! Toco instrumentos de percussão como pandeiro, tan tan, reco-reco e até arrisco um pouco no cavaquinho 🎶. A música me ensinou ritmo, foco e disciplina — qualidades que aplico também nos meus projetos e estudos.
+
+            Atualmente, busco uma oportunidade em uma empresa onde eu possa evoluir profissionalmente, aplicar meu conhecimento técnico, e principalmente aprender na prática com uma equipe experiente, aprimorando minhas habilidades dia após dia.
+
+            Tenho interesse especial na área de Redes e Segurança da Informação, e meu grande objetivo é seguir carreira como Especialista em Segurança da Informação, aprofundando meus estudos e conquistando certificações reconhecidas.
+
+            Sou curioso, dedicado e gosto de aprender com desafios — acredito que cada projeto é uma nova chance de crescimento pessoal e profissional. 🚀 </strong>
+        </p>
+        </section>
+
+
+    <section id="skills" class="secao">
+        <h2>Minhas Habilidades (Skills)</h2>
+        <div class="lista-skills">
+            <ul>
+                <li>Comunicação em inglês intermediário</li>
+                <li>HTML5 e CSS3</li>
+                <li>Python</li>
+                <li>C#</li>
+                <li>Noções de automação e infraestrutura cloud</li>
+                <li>Criação e otimização de prompts para IA</li>
+                <li>Fundamentos de redes e protocolos (HTTP, WebSockets)</li>
+                <li>Preparação para entrevistas internacionais</li>
+                <li>Automação e integração de serviços AWS - Nivel Básico</li>
+                <li>Conceitos de UX e UI Design</li>
+                <li>PHOTOSHOP</li>
+                <li>Edição de videos </li>
+                <li>Montagem e manutenção de hardware</li>
+                <li>Criação de interfaces intuitivas</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="certificados" class="secao">
+        <h2>Meus Certificados</h2>
+        <div class="galeria-certificados">
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/certificado1.pdf" target="_blank">
+                    <img src="Icones/amazonicon.png" alt="certificate of amazon">
+                </a>
+                <h3>Amazon bedrock getting started</h3>
+                <p>AMAZON CERTIFICATE</p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/certificado2.pdf" target="_blank">
+                    <img src="Icones/amazonicon.png" alt="Foundations of Prompt Engineer">
+                </a>
+                <h3>Foundations of Prompt Engineer</h3>
+                <p>AMAZON CERTIFICATE</p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/certificado3.pdf" target="_blank">
+                    <img src="Icones/dioicon.png" alt="">
+                </a>
+                <h3>Comunicação SERVERxCLIENT</h3>
+                <p>DIO</p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/certificado4.pdf" target="_blank">
+                    <img src="Icones/aluraicon.png" alt="">
+                </a>
+                <h3>Java: primeira aplicação</h3>
+                <p>ALURA</p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/certificado5.pdf" target="_blank">
+                    <img src="Icones/dioicon.png" alt="">
+                </a>
+                <h3>VERSIONAMENTO GIT E GITHUB</h3>
+                <p>DIO</p>
+            </div>
+            
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/INGLÊS .pdf" target="_blank">
+                    <img src="Icones/inglesicon.jpg" alt="">
+                </a>
+                <h3>English Fundamentals: Successful
+                    Networking and Interviews
+                    </h3>
+                <p>Inglish test SANTANDER</p>
+            </div>
+    
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/INGLES2.pdf" target="_blank">
+                    <img src="Icones/CNAicon.jpg" alt="">
+                </a>
+                <h3>English Fundamentals: Successful
+                    Networking and Interviews
+                    </h3>
+                <p>SANTANDER | Inglish test </p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/certificado6.pdf" target="_blank">
+                    <img src="Icones/amazonicon.png" alt="">
+                </a>
+                <h3>Getting Started with AWS for Games</h3>
+                <p>| AWS for Games |</p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/certificado7.pdf" target="_blank">
+                    <img src="Icones/aluraicon.png" alt="">
+                </a>
+                <h3>COMEÇANDO EM PROGRAMAÇÃO:
+                    CARREIRA E PRIMEIROS PASSOS</h3>
+                <p>ALURA CERTIFICATES</p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/certificado8.pdf" target="_blank">
+                    <img src="Icones/aluraicon.png" alt="">
+                </a>
+                <h3>UX DESIGN: CONHEÇA O UNIVERSO DA
+                    EXPERIÊNCIA EM PRODUTOS DIGITAIS</h3>
+                <p>| ALURA CERTIFICATES | </p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/certificado9.pdf" target="_blank">
+                    <img src="Icones/aluraicon.png" alt="">
+                </a>
+                <h3>DATA ANALYSIS: GOOGLE SHEETS</h3>
+                <p>| ALURA CERTIFICATES | </p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/certificado12.pdf" target="_blank">
+                    <img src="Icones/dioicon.png" alt="">
+                </a>
+                <h3>Introdução ao desenvolvimento Front-End</h3>
+                <p>| ALURA CERTIFICATES | </p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/certificado17.pdf" target="_blank">
+                    <img src="Icones/aluraicon.png" alt="">
+                </a>
+                <h3>TRANSIÇÃO DE CARREIRA: UM GUIA PARA A
+                    ÁREA DA TECNOLOGIA</h3>
+                <p>| ALURA CERTIFICATES | </p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/certificado19.pdf" target="_blank">
+                    <img src="Icones/aluraicon.png" alt="">
+                </a>
+                <h3>UX DESIGN: CONHEÇA O UNIVERSO DA
+                    EXPERIÊNCIA EM PRODUTOS DIGITAIS </h3>
+                <p>| ALURA CERTIFICATES | </p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/masterclassfigma.png" target="_blank">
+                    <img src="Icones/aluraicon.png" alt="">
+                </a>
+                <h3>MASTER-CLASS FIGMA </h3>
+                <p>| ALURA CERTIFICATES | </p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/comecandoemti.png" target="_blank">
+                    <img src="Icones/aluraicon.png" alt="">
+                </a>
+                <h3>Primeiros passo em programação </h3>
+                <p>| ALURA CERTIFICATES | </p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/htmlecss.png" target="_blank">
+                    <img src="Icones/aluraicon.png" alt="">
+                </a>
+                <h3>HTML e CSS </h3>
+                <p>| ALURA CERTIFICATES | </p>
+            </div>
+
+            <div class="certificado-item animacao-entrada">
+                <a href="certificados/technical writting.png" target="_blank">
+                    <img src="Icones/aluraicon.png" alt="">
+                </a>
+                <h3>Technical Writting</h3>
+                <p>| ALURA CERTIFICATES | </p>
+            </div>
+
+
+        </div>
+        
+
+            <section id="projetos" class="secao">
+                    <h2 ID >🎨 Meus Trabalhos de Design (Criações Visuais)</h2>
+                    <div class="galeria-designs">
+                        
+                        <div class="design-item animacao-entrada">
+                            <a href="projetos photoshop/Bodybuilder.png" target="_blank">
+                                <img src="projetos photoshop/Bodybuilder.png" alt="Miniatura do Projeto de Design 1">
+                            </a>
+                            <h3>Design de fisiculturismo</h3>
+                            <p> DESIGN | Ferramenta: PHOTOSHOP</p>
+                        </div>
+            
+                        <div class="design-item animacao-entrada">
+                            <a href="projetos photoshop/carrossel patricia 2.jpg" target="_blank">
+                                <img src="projetos photoshop/carrossel patricia 2.jpg" alt="Miniatura do Projeto de Design 2">
+                            </a>
+                            <h3>CARROSSEL POST INSTAGRAM</h3>
+                            <p> IMAGEM CARROSSEL | Ferramenta: PHOTOSHOP</p>
+                        </div>
+            
+                        <div class="design-item animacao-entrada">
+                            <a href="projetos photoshop/cartao visita enrolados Jú.jpg" target="_blank">
+                                <img src="projetos photoshop/cartao visita enrolados Jú.jpg" alt="Miniatura do Projeto de Design 3">
+                            </a>
+                            <h3>Criação de Logo e Identidade</h3>
+                            <p>Design Gráfico | Ferramenta: Photoshop/Illustrator</p>
+                        </div>
+
+                        <div class="design-item animacao-entrada">
+                            <a href="projetos photoshop/arte pepper.jpg" target="_blank">
+                                <img src="projetos photoshop/arte pepper.jpg" alt="Miniatura do Projeto de Design 3">
+                            </a>
+                            <h3>Criação de POST-INSTAGRAM</h3>
+                            <p>Design Gráfico | Ferramenta: Photoshop</p>
+                        </div>
+
+                        <div class="design-item animacao-entrada">
+                            <a href="projetos photoshop/harry kane  sport design.jpg" target="_blank">
+                                <img src="projetos photoshop/harry kane  sport design.jpg" alt="Miniatura do Projeto de Design 3">
+                            </a>
+                            <h3>Flayer Esportivo</h3>
+                            <p>FLAYER | Ferramenta: Photoshop</p>
+                        </div>
+
+                        <div class="design-item animacao-entrada">
+                            <a href="projetos photoshop/corinthians post.jpg" target="_blank">
+                                <img src="projetos photoshop/corinthians post.jpg" alt="Miniatura do Projeto de Design 3">
+                            </a>
+                            <h3>Flayer Esportivo</h3>
+                            <p>FLAYER | Ferramenta: Photoshop</p>
+                        </div>
+
+                        <div class="design-item animacao-entrada">
+                            <a href="projetos photoshop/israel design 1.jpg" target="_blank">
+                                <img src="projetos photoshop/israel design 1.jpg" alt="Miniatura do Projeto de Design 3">
+                            </a>
+                            <h3>Flayer Esportivo</h3>
+                            <p>FLAYER | Ferramenta: Photoshop</p>
+                        </div>
+
+                        <div class="design-item animacao-entrada">
+                            <a href="projetos photoshop/Gustavo Mioto flayer.jpg" target="_blank">
+                                <img src="projetos photoshop/Gustavo Mioto flayer.jpg" alt="Miniatura do Projeto de Design 3">
+                            </a>
+                            <h3>POST DESIGN</h3>
+                            <p>DESIGN  | Ferramenta: Photoshop</p>
+                        </div>
+
+                        <div class="design-item animacao-entrada">
+                            <a href="projetos photoshop/lucaas design agendaa.jpg" target="_blank">
+                                <img src="projetos photoshop/lucaas design agendaa.jpg" alt="Miniatura do Projeto de Design 3">
+                            </a>
+                            <h3>AGENDA ABERTA </h3>
+                            <p>DESIGN  | Ferramenta: Photoshop</p>
+                        </div>
+
+                        <div class="design-item animacao-entrada">
+                            <a href="projetos photoshop/Pneu design.jpg" target="_blank">
+                                <img src="projetos photoshop/Pneu design.jpg" alt="Miniatura do Projeto de Design 3">
+                            </a>
+                            <h3>Marketign Design</h3>
+                            <p>DESIGN  | Ferramenta: Photoshop</p>
+                        </div>
+
+                        <div class="design-item animacao-entrada">
+                            <a href="projetos photoshop/Mc Cabelinho.jpg" target="_blank">
+                                <img src="projetos photoshop/Mc Cabelinho.jpg" alt="Miniatura do Projeto de Design 3">
+                            </a>
+                            <h3>Design Artista</h3>
+                            <p>DESIGN  | Ferramenta: Photoshop</p>
+                        </div>
+
+                        <div class="design-item animacao-entrada">
+                            <a href="projetos photoshop/rei.jpg" target="_blank">
+                                <img src="projetos photoshop/rei.jpg" alt="Miniatura do Projeto de Design 3">
+                            </a>
+                            <h3>Design Artista</h3>
+                            <p>DESIGN  | Ferramenta: Photoshop</p>
+                        </div>
+            
+                        </div>
+                    <div style="text-align: center; margin-top: 30px;">
+                         <a href="https://www.instagram.com/asbeldsgn/" class="botao" target="_blank">Ver Meu Portfólio de Design no Instagram</a>
+                    </div>
+                </section>
+
+                <section id="projetos" class="secao">
+                    <h2>💻 Aplicações Web ( CALCULADORA BASICA )</h2>
+                    <div class="galeria-projetos">
+                        
+                        <div class="calculadora design-item animacao-entrada">
+                            <a href="calculator project/calculator.html" target="_blank">
+                                <img class="imagem-calculadora" src="calculator project/iconcalculator.png" alt="Miniatura do Projeto de Design 3">
+                            </a>
+                            <h3> CALCULADORA BÁSICA</h3>
+                            <p> Calculadora | Tecnologias usadas: HTML, CSS e JavaScript</p>
+                        </div>
+                        
+            
+                        </div>
+                    
+
+                </section>
+
+                <section id="INSPETOR-DE-QUALIDADE" class="secao">
+                    <h2> INSPETOR DE QUALIDADE </h2>
+                    <div class="INSPETOR-DE-QUALIDADE">
+
+                        <p class="resumo">Atuo como Inspetor de Qualidade Júnior, assegurando que processos, produtos e serviços estejam em
+                            estrita conformidade com os padrões estabelecidos, em alinhamento com os requisitos da ISO 9001. Realizo inspeções detalhadas, identifico
+                            não conformidades e proponho melhorias, contribuindo para a eficiência operacional e a confiabilidade dos processos. 
+                            Minha atuação inclui inspeção de porões de navios, classificação de grãos como milho e soja, e análise de
+                            RI no açúcar, bem como o acompanhamento completo de descarga e carregamento de produtos, incluindo a classificação de caminhões
+                            e vagões. Também sou responsável pela abertura, conferência e finalização de documentação de navios, garantindo a correta execução de procedimentos logísticos.
+                            
+                            O exercício dessas atividades requer elevada atenção aos detalhes, análise crítica, organização e comunicação eficiente com equipes técnicas e operacionais. Ademais, possuo inglês intermediário, o que me permite interagir com profissionais estrangeiros, facilitando a coordenação de operações internacionais e assegurando o cumprimento de padrões globais de qualidade.</p>
+                    </div>
+
+                    <section id="album" class="secao">
+                        <h2>                                       </h2>
+                        <div class="galeria-album">
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/acompanhamento.jpeg" alt="Foto 1">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/dentro do porao2.jpeg" alt="Foto 2">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/proa.jpeg" alt="Foto 3">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/dentro do porão.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/talho navio de milho.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/vante.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/operação1.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/WhatsApp Image 2025-10-25 at 4.55.19 PM.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/operação1.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/1.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/1.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/2.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/3.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/4.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/5.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/6.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/u7.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/8.jpeg" alt="Foto 4">
+                            </div>
+
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/diferenca.jpg" alt="Foto 4">
+                            </div>
+
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/22.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/44.jpeg" alt="Foto 4">
+                            </div>
+
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/55.png" alt="Foto 4">
+                            </div>
+
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/212121212.jpeg" alt="Foto 4">
+                            </div>
+                            
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/21212212.jpeg" alt="Foto 4">
+                            </div>
+
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/classificacao.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/classificacao1.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/classificacao3.jpeg" alt="Foto 4">
+                            </div>
+                            <div class="foto-item">
+                                <img src="Inspetor de qualidade/classificacao4.jpeg" alt="Foto 4">
+                            </div>
+                        
+                        
+                        
+                            <!-- Adicione mais fotos aqui -->
+                        </div>
+                    </section>
+                    
+                   
+                        
+            
+                        
+                    
+
+                </section>
+
+
+        <div class="espaco"></div>
+               
+
+    <footer><p>&copy; 2025 Asbel Nascimento. Todos os direitos reservados.</p></footer>
+</body>
+
+
+
+</html>

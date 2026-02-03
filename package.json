@@ -1,0 +1,20 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Portfólio pessoal desenvolvido com **HTML, CSS e JavaScript**, reunindo minha apresentação profissional, habilidades técnicas, certificações e projetos práticos em **desenvolvimento web, design gráfico e qualidade**.",
+  "main": "java.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asbelnascimentodev/website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asbelnascimentodev/website/issues"
+  },
+  "homepage": "https://github.com/asbelnascimentodev/website#readme"
+}
