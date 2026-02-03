@@ -23,7 +23,7 @@ const DesignCard = ({ item }: { item: DesignItem }) => {
     return (
         <motion.div
             whileHover={{ y: -10 }}
-            className="relative flex-none w-[260px] sm:w-[280px] md:w-[320px] aspect-[4/5] bg-slate-900/40 rounded-3xl overflow-hidden border border-white/10 group cursor-pointer"
+            className="relative flex-none w-[260px] xs:w-[280px] sm:w-[320px] md:w-[350px] aspect-[4/5] bg-slate-900/40 rounded-3xl overflow-hidden border border-white/10 group cursor-pointer"
             onClick={() => window.open(item.href, '_blank')}
         >
             <img
@@ -36,14 +36,14 @@ const DesignCard = ({ item }: { item: DesignItem }) => {
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
 
             {/* Content */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+            <div className="absolute bottom-0 left-0 right-0 p-4 xs:p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-white font-bold text-base md:text-lg leading-tight group-hover:text-sky-400 transition-colors duration-300">
+                    <h3 className="text-white font-bold text-sm xs:text-base md:text-lg leading-tight group-hover:text-sky-400 transition-colors duration-300">
                         {item.title}
                     </h3>
                     <ExternalLink className="w-4 h-4 text-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0 mt-1" />
                 </div>
-                <p className="text-slate-400 text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em]">
+                <p className="text-slate-400 text-[9px] xs:text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em]">
                     {item.category}
                 </p>
             </div>
@@ -59,27 +59,29 @@ export const DesignCarousel = () => {
 
     const scroll = (direction: 'left' | 'right') => {
         if (containerRef.current) {
-            const scrollAmount = direction === 'left' ? -400 : 400;
+            const scrollAmount = direction === 'left' ? -containerRef.current.offsetWidth * 0.8 : containerRef.current.offsetWidth * 0.8;
             containerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
     };
 
     return (
         <div className="w-full relative group/carousel">
-            {/* Navigation Buttons */}
-            <div className="absolute top-1/2 -left-4 -translate-y-1/2 z-20 opacity-0 md:group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-none md:pointer-events-auto">
+            {/* Navigation Buttons - Hidden on touch devices/small screens by default, shown on md+ hover */}
+            <div className="absolute top-1/2 -left-2 md:-left-4 -translate-y-1/2 z-20 opacity-0 md:group-hover/carousel:opacity-100 transition-opacity duration-300 hidden md:block">
                 <button
                     onClick={() => scroll('left')}
                     className="p-3 rounded-full bg-slate-900/80 border border-white/10 text-white hover:bg-sky-400 hover:text-slate-900 transition-all shadow-xl backdrop-blur-md"
+                    aria-label="Anterior"
                 >
                     <ChevronLeft className="w-6 h-6" />
                 </button>
             </div>
 
-            <div className="absolute top-1/2 -right-4 -translate-y-1/2 z-20 opacity-0 md:group-hover/carousel:opacity-100 transition-opacity duration-300 pointer-events-none md:pointer-events-auto">
+            <div className="absolute top-1/2 -right-2 md:-right-4 -translate-y-1/2 z-20 opacity-0 md:group-hover/carousel:opacity-100 transition-opacity duration-300 hidden md:block">
                 <button
                     onClick={() => scroll('right')}
                     className="p-3 rounded-full bg-slate-900/80 border border-white/10 text-white hover:bg-sky-400 hover:text-slate-900 transition-all shadow-xl backdrop-blur-md"
+                    aria-label="Próximo"
                 >
                     <ChevronRight className="w-6 h-6" />
                 </button>
@@ -88,19 +90,19 @@ export const DesignCarousel = () => {
             {/* Carousel Container */}
             <div
                 ref={containerRef}
-                className="flex gap-6 overflow-x-auto pb-8 pt-4 no-scrollbar snap-x snap-mandatory px-4"
+                className="flex gap-4 xs:gap-6 overflow-x-auto pb-8 pt-4 no-scrollbar snap-x snap-mandatory"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
                 {designs.map((item) => (
-                    <div key={item.id} className="snap-center">
+                    <div key={item.id} className="snap-center first:pl-4 last:pr-4 md:first:pl-0 md:last:pr-0">
                         <DesignCard item={item} />
                     </div>
                 ))}
             </div>
 
             {/* Gradient Fades for desktop */}
-            <div className="hidden md:block absolute top-0 left-0 bottom-8 w-24 bg-gradient-to-r from-slate-950 to-transparent pointer-events-none z-10" />
-            <div className="hidden md:block absolute top-0 right-0 bottom-8 w-24 bg-gradient-to-l from-slate-950 to-transparent pointer-events-none z-10" />
+            <div className="hidden lg:block absolute top-0 left-0 bottom-8 w-24 bg-gradient-to-r from-slate-950 to-transparent pointer-events-none z-10" />
+            <div className="hidden lg:block absolute top-0 right-0 bottom-8 w-24 bg-gradient-to-l from-slate-950 to-transparent pointer-events-none z-10" />
         </div>
     );
 };

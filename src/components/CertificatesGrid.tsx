@@ -31,26 +31,26 @@ const CertificateCard = ({ certificate, index }: { certificate: Certificate; ind
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            whileHover={{ scale: 1.03, y: -5 }}
-            className="group relative bg-slate-900/40 backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-slate-800/60 hover:border-sky-400/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex flex-col h-full cursor-pointer"
+            whileHover={{ scale: 1.02, y: -5 }}
+            className="group relative bg-slate-900/40 backdrop-blur-sm border border-white/10 rounded-2xl p-4 xs:p-5 md:p-6 transition-all duration-300 hover:bg-slate-800/60 hover:border-sky-400/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex flex-col h-full cursor-pointer"
             onClick={() => window.open(certificate.href, '_blank')}
         >
             <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <ExternalLink className="w-4 h-4 text-sky-400" />
             </div>
 
-            <div className="mb-4">
-                <div className="w-10 h-10 rounded-xl bg-sky-400/10 flex items-center justify-center mb-4 transition-colors duration-300 group-hover:bg-sky-400/20">
-                    <Award className="w-5 h-5 text-sky-400" />
+            <div className="mb-3 xs:mb-4">
+                <div className="w-8 h-8 xs:w-10 xs:h-10 rounded-lg xs:rounded-xl bg-sky-400/10 flex items-center justify-center mb-3 xs:mb-4 transition-colors duration-300 group-hover:bg-sky-400/20">
+                    <Award className="w-4 h-4 xs:w-5 xs:h-5 text-sky-400" />
                 </div>
             </div>
 
-            <h3 className="text-white font-bold text-lg leading-tight mb-2 group-hover:text-sky-400 transition-colors duration-300 relative inline-block">
+            <h3 className="text-white font-bold text-sm xs:text-base md:text-lg leading-tight mb-2 group-hover:text-sky-400 transition-colors duration-300 relative inline-block">
                 {certificate.title}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-sky-400 transition-all duration-300 group-hover:w-full"></span>
             </h3>
 
-            <p className="text-slate-400 text-sm font-medium uppercase tracking-wider mt-auto">
+            <p className="text-slate-400 text-[10px] xs:text-xs md:text-sm font-medium uppercase tracking-wider mt-auto">
                 {certificate.institution}
             </p>
 
@@ -62,8 +62,8 @@ const CertificateCard = ({ certificate, index }: { certificate: Certificate; ind
 
 export const CertificatesGrid = () => {
     return (
-        <div className="w-full max-w-7xl mx-auto px-4 md:px-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="w-full max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 xs:gap-6">
                 {certificates.map((cert, index) => (
                     <CertificateCard key={cert.id} certificate={cert} index={index} />
                 ))}

@@ -22,23 +22,20 @@ const photos: QualityPhoto[] = [
 const PhotoCarousel = ({ baseVelocity = -0.2 }: { baseVelocity?: number }) => {
     const baseX = useMotionValue(0);
 
-    // With 4 repetitions, wrap at -25% ensures we always show the same view when resetting
-    // This creates a perfectly seamless loop
     const x = useTransform(baseX, (v) => `${wrap(-25, 0, v)}%`);
 
     useAnimationFrame((t, delta) => {
-        let moveBy = baseVelocity * (delta / 1000) * 8; // Reduced speed multiplier
+        let moveBy = baseVelocity * (delta / 1000) * 8;
         baseX.set(baseX.get() + moveBy);
     });
 
     return (
-        <div className="overflow-hidden whitespace-nowrap flex flex-nowrap w-full relative py-4">
-            <motion.div className="flex flex-nowrap gap-6" style={{ x }}>
-                {/* Render photos 4 times to ensure no gaps ever appear regardless of screen size */}
+        <div className="overflow-hidden whitespace-nowrap flex flex-nowrap w-full relative py-2 xs:py-4">
+            <motion.div className="flex flex-nowrap gap-4 xs:gap-6" style={{ x }}>
                 {[...photos, ...photos, ...photos, ...photos].map((photo, index) => (
                     <div
                         key={`${photo.id}-${index}`}
-                        className="flex-none w-[300px] md:w-[400px] aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                        className="flex-none w-[200px] xs:w-[280px] md:w-[400px] aspect-[4/3] rounded-2xl xs:rounded-3xl overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
                     >
                         <img
                             src={photo.src}
@@ -55,15 +52,15 @@ const PhotoCarousel = ({ baseVelocity = -0.2 }: { baseVelocity?: number }) => {
 
 export const QualityInspector = () => {
     return (
-        <div className="w-full py-16 flex flex-col items-center">
+        <div className="w-full py-12 md:py-16 flex flex-col items-center">
             <div className="max-w-7xl mx-auto px-4 w-full">
-                <h2 className="text-4xl font-extrabold text-white mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6 md:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                     INSPETOR DE QUALIDADE
                 </h2>
 
-                <div className="max-w-3xl mx-auto mb-16">
-                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl">
-                        <p className="text-lg md:text-xl leading-relaxed text-slate-200 font-medium text-center">
+                <div className="max-w-3xl mx-auto mb-10 md:mb-16">
+                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 xs:p-8 md:p-10 shadow-2xl">
+                        <p className="text-base md:text-xl leading-relaxed text-slate-200 font-medium text-center">
                             Atuo como Inspetor de Qualidade Júnior, assegurando que processos, produtos e serviços estejam em estrita
                             conformidade com os padrões estabelecidos (ISO 9001). Realizo inspeções detalhadas, identifico não
                             conformidades e proponho melhorias. Minha atuação inclui inspeção de porões de navios, classificação de
@@ -73,10 +70,10 @@ export const QualityInspector = () => {
                 </div>
             </div>
 
-            <div className="w-full relative overflow-hidden flex justify-center py-10">
-                {/* Strong Center-Focus Vignette Effect */}
-                <div className="absolute top-0 left-0 bottom-0 w-[15%] md:w-[35%] bg-gradient-to-r from-slate-950 via-slate-950/90 to-transparent z-20 pointer-events-none" />
-                <div className="absolute top-0 right-0 bottom-0 w-[15%] md:w-[35%] bg-gradient-to-l from-slate-950 via-slate-950/90 to-transparent z-20 pointer-events-none" />
+            <div className="w-full relative overflow-hidden flex justify-center py-6 xs:py-10">
+                {/* Vignette Effect - Responsive width */}
+                <div className="absolute top-0 left-0 bottom-0 w-[10%] xs:w-[20%] md:w-[35%] bg-gradient-to-r from-slate-950 via-slate-950/90 to-transparent z-20 pointer-events-none" />
+                <div className="absolute top-0 right-0 bottom-0 w-[10%] xs:w-[20%] md:w-[35%] bg-gradient-to-l from-slate-950 via-slate-950/90 to-transparent z-20 pointer-events-none" />
 
                 {/* Secondary inner vignette for smoother transition */}
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-950/20 via-transparent to-slate-950/20 z-10 pointer-events-none" />

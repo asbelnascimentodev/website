@@ -21,22 +21,23 @@ const App = () => {
     const linkedinRoot = document.getElementById("linkedin-root");
 
     return (
-        <>
-            <div className="flex flex-col items-center justify-center w-full min-h-[50vh] pb-12">
-                <h1 className="text-3xl md:text-4xl text-white font-medium mb-4 opacity-80">
+        <div className="w-full">
+            {/* Hero Section */}
+            <div className="flex flex-col items-center justify-center w-full min-h-[60vh] md:min-h-[80vh] px-4 py-12 md:py-24 max-w-[1200px] mx-auto">
+                <h1 className="text-2xl md:text-4xl text-white font-medium mb-4 opacity-80 text-center">
                     Olá, eu sou
                 </h1>
                 <GradualSpacing
                     text="ASBEL NASCIMENTO"
-                    className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-center max-w-5xl text-white tracking-tighter drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]"
+                    className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-center w-full text-white tracking-tighter drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]"
                 />
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.8 }}
-                    className="flex flex-wrap gap-6 mt-10 justify-center items-center"
+                    className="flex flex-col xs:flex-row gap-4 xs:gap-6 mt-10 justify-center items-center w-full"
                 >
-                    <Button asChild variant="outline" className="min-w-[200px] h-12 text-base font-bold bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full">
+                    <Button asChild variant="outline" className="w-full xs:w-auto min-w-[200px] h-12 text-sm xs:text-base font-bold bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-8">
                         <a href="#sobre">
                             Saiba Mais Sobre Mim
                         </a>
@@ -57,13 +58,14 @@ const App = () => {
                 </motion.div>
             </div>
 
+            {/* Content Sections - Using createPortal to map to index.html roots but ensuring fluid width */}
             {aboutRoot && createPortal(
-                <div className="w-full flex flex-col items-center max-w-4xl mx-auto px-4">
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                <div className="w-full max-w-[1200px] mx-auto px-4 py-8 md:py-16">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Sobre Mim
                     </h2>
-                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl max-h-[450px] overflow-y-auto custom-scrollbar">
-                        <div className="text-lg md:text-xl leading-relaxed text-slate-200 font-medium whitespace-pre-line">
+                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl max-h-[500px] overflow-y-auto custom-scrollbar w-full">
+                        <div className="text-base md:text-xl leading-relaxed text-slate-200 font-medium whitespace-pre-line text-justify md:text-left">
                             Meu nome é Asbel Nascimento, Atualmente gerencio uma rede social do instagram de BOLOS ("didi_bolosofc"), com alguns videos e posts feito por mim. Também sou um Estudante de Desenvolvimento Web Júnior com grande interesse por tecnologia, design e inovação. Atualmente, possuo conhecimentos básicos em HTML, CSS, JavaScript, UX Design, python e Redes de Computadores e Lógica de Programação — áreas que venho aprimorando constantemente por meio de cursos e prática diária.
                             {"\n\n"}
                             Tenho um inglês intermediário, o que me permite me comunicar bem e manter conversas com estrangeiros sobre diversos assuntos, especialmente voltados à tecnologia.
@@ -82,7 +84,7 @@ const App = () => {
             )}
 
             {marqueeRoot && createPortal(
-                <div className="flex flex-col gap-0 py-8 overflow-hidden">
+                <div className="w-full flex flex-col gap-0 py-8 overflow-hidden">
                     <MarqueeAnimation
                         direction="left"
                         baseVelocity={-2}
@@ -102,28 +104,32 @@ const App = () => {
             )}
 
             {qualityRoot && createPortal(
-                <QualityInspector />,
+                <div className="w-full max-w-[1200px] mx-auto">
+                    <QualityInspector />
+                </div>,
                 qualityRoot
             )}
 
             {linkedinRoot && createPortal(
-                <LinkedInProjects />,
+                <div className="w-full max-w-[1200px] mx-auto px-4">
+                    <LinkedInProjects />
+                </div>,
                 linkedinRoot
             )}
 
             {designsRoot && createPortal(
-                <div className="w-full flex flex-col items-center max-w-7xl mx-auto px-4 pt-16">
+                <div className="w-full max-w-[1200px] mx-auto px-4 py-16">
                     <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Meus Trabalhos de Design
                     </h2>
-                    <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
+                    <p className="text-slate-400 text-center mb-8 md:mb-12 max-w-2xl mx-auto px-4">
                         Uma seleção de projetos visuais focados em identidade, social media e design esportivo.
                     </p>
                     <DesignCarousel />
 
-                    <div className="mt-16 text-center">
-                        <Button asChild variant="outline" className="min-w-[240px] h-12 text-base font-bold bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full group">
-                            <a href="https://www.instagram.com/asbeldsgn/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <div className="mt-12 md:mt-16 text-center px-4">
+                        <Button asChild variant="outline" className="w-full xs:w-auto min-w-[240px] h-12 text-sm xs:text-base font-bold bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full group px-8">
+                            <a href="https://www.instagram.com/asbeldsgn/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 justify-center">
                                 Ver Portfólio no Instagram
                                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </a>
@@ -134,8 +140,8 @@ const App = () => {
             )}
 
             {certificadosRoot && createPortal(
-                <div className="w-full flex flex-col items-center max-w-7xl mx-auto px-4 py-12">
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                <div className="w-full max-w-[1200px] mx-auto px-4 py-12">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Meus Certificados
                     </h2>
                     <CertificatesGrid />
@@ -144,15 +150,15 @@ const App = () => {
             )}
 
             {skillsRoot && createPortal(
-                <div className="w-full flex flex-col items-center">
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                <div className="w-full max-w-[1200px] mx-auto px-4 py-8">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Minhas Habilidades
                     </h2>
                     <InteractiveSkills />
                 </div>,
                 skillsRoot
             )}
-        </>
+        </div>
     );
 };
 
