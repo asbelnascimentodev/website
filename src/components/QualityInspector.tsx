@@ -52,15 +52,15 @@ const PhotoCarousel = ({ baseVelocity = -0.2 }: { baseVelocity?: number }) => {
 
 export const QualityInspector = () => {
     return (
-        <div className="w-full py-8 md:py-16 flex flex-col items-center overflow-hidden">
-            <div className="w-full px-4">
-                <h2 className="text-2xl xs:text-3xl md:text-4xl font-extrabold text-white mb-6 md:mb-10 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400 uppercase">
+        <div className="w-full py-12 md:py-16 flex flex-col items-center">
+            <div className="max-w-7xl mx-auto px-4 w-full">
+                <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-6 md:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                     INSPETOR DE QUALIDADE
                 </h2>
 
-                <div className="max-w-xl md:max-w-3xl mx-auto mb-10 md:mb-16">
-                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-5 xs:p-8 md:p-12 shadow-2xl">
-                        <p className="text-sm xs:text-base md:text-xl leading-relaxed text-slate-200 font-medium text-center md:text-justify indent-4 xs:indent-8">
+                <div className="max-w-3xl mx-auto mb-10 md:mb-16">
+                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 xs:p-8 md:p-10 shadow-2xl">
+                        <p className="text-base md:text-xl leading-relaxed text-slate-200 font-medium text-center">
                             Atuo como Inspetor de Qualidade Júnior, assegurando que processos, produtos e serviços estejam em estrita
                             conformidade com os padrões estabelecidos (ISO 9001). Realizo inspeções detalhadas, identifico não
                             conformidades e proponho melhorias. Minha atuação inclui inspeção de porões de navios, classificação de
@@ -70,12 +70,15 @@ export const QualityInspector = () => {
                 </div>
             </div>
 
-            <div className="w-full relative py-6 xs:py-10 bg-slate-950/20">
-                {/* Vignette Effect - Mobile First */}
-                <div className="absolute top-0 left-0 bottom-0 w-[10%] md:w-[25%] bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent z-20 pointer-events-none" />
-                <div className="absolute top-0 right-0 bottom-0 w-[10%] md:w-[25%] bg-gradient-to-l from-slate-950 via-slate-950/80 to-transparent z-20 pointer-events-none" />
+            <div className="w-full relative overflow-hidden flex justify-center py-6 xs:py-10">
+                {/* Vignette Effect - Responsive width */}
+                <div className="absolute top-0 left-0 bottom-0 w-[10%] xs:w-[20%] md:w-[35%] bg-gradient-to-r from-slate-950 via-slate-950/90 to-transparent z-20 pointer-events-none" />
+                <div className="absolute top-0 right-0 bottom-0 w-[10%] xs:w-[20%] md:w-[35%] bg-gradient-to-l from-slate-950 via-slate-950/90 to-transparent z-20 pointer-events-none" />
 
-                <div className="w-full">
+                {/* Secondary inner vignette for smoother transition */}
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/20 via-transparent to-slate-950/20 z-10 pointer-events-none" />
+
+                <div className="w-full max-w-[1400px]">
                     <PhotoCarousel />
                 </div>
             </div>

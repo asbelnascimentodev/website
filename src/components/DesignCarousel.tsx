@@ -55,73 +55,54 @@ const DesignCard = ({ item }: { item: DesignItem }) => {
 };
 
 export const DesignCarousel = () => {
-    const scrollRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const scroll = (direction: 'left' | 'right') => {
-        if (scrollRef.current) {
-            const { current } = scrollRef;
-            const scrollAmount = current.clientWidth * 0.8;
-            current.scrollBy({
-                left: direction === 'left' ? -scrollAmount : scrollAmount,
-                behavior: 'smooth'
-            });
+        if (containerRef.current) {
+            const scrollAmount = direction === 'left' ? -containerRef.current.offsetWidth * 0.8 : containerRef.current.offsetWidth * 0.8;
+            containerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
     };
 
     return (
-        <div className="relative w-full group overflow-hidden">
-            {/* Navigation Arrows - Desktop Only for senior feel */}
-            <button
-                onClick={() => scroll('left')}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-slate-900/80 border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:md:opacity-100 transition-all duration-300 hover:bg-sky-500 hover:border-sky-400 hover:scale-110 hidden md:flex"
-            >
-                <ChevronLeft className="w-6 h-6" />
-            </button>
+        <div className="w-full relative group/carousel">
+            {/* Navigation Buttons - Hidden on touch devices/small screens by default, shown on md+ hover */}
+            <div className="absolute top-1/2 -left-2 md:-left-4 -translate-y-1/2 z-20 opacity-0 md:group-hover/carousel:opacity-100 transition-opacity duration-300 hidden md:block">
+                <button
+                    onClick={() => scroll('left')}
+                    className="p-3 rounded-full bg-slate-900/80 border border-white/10 text-white hover:bg-sky-400 hover:text-slate-900 transition-all shadow-xl backdrop-blur-md"
+                    aria-label="Anterior"
+                >
+                    <ChevronLeft className="w-6 h-6" />
+                </button>
+            </div>
 
-            <button
-                onClick={() => scroll('right')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-slate-900/80 border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:md:opacity-100 transition-all duration-300 hover:bg-sky-500 hover:border-sky-400 hover:scale-110 hidden md:flex"
-            >
-                <ChevronRight className="w-6 h-6" />
-            </button>
+            <div className="absolute top-1/2 -right-2 md:-right-4 -translate-y-1/2 z-20 opacity-0 md:group-hover/carousel:opacity-100 transition-opacity duration-300 hidden md:block">
+                <button
+                    onClick={() => scroll('right')}
+                    className="p-3 rounded-full bg-slate-900/80 border border-white/10 text-white hover:bg-sky-400 hover:text-slate-900 transition-all shadow-xl backdrop-blur-md"
+                    aria-label="Próximo"
+                >
+                    <ChevronRight className="w-6 h-6" />
+                </button>
+            </div>
 
             {/* Carousel Container */}
             <div
-                ref={scrollRef}
-                className="galeria-designs snap-x snap-mandatory px-4 md:px-0"
+                ref={containerRef}
+                className="flex gap-4 xs:gap-6 overflow-x-auto pb-8 pt-4 no-scrollbar snap-x snap-mandatory"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-                {designs.map((design) => (
-                    <motion.div
-                        key={design.id}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                        className="design-item snap-center flex-none group/card relative"
-                    >
-                        <div className="relative aspect-[4/5] overflow-hidden">
-                            <img
-                                src={design.src}
-                                alt={design.title}
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110"
-                            />
-                            {/* Overlay on hover */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                                <span className="text-sky-400 text-xs font-bold tracking-widest uppercase mb-2">Design</span>
-                                <h3 className="text-white text-xl font-bold">{design.title}</h3>
-                                <p className="text-slate-300 text-sm mt-1">{design.category}</p>
-                            </div>
-                        </div>
-                    </motion.div>
+                {designs.map((item) => (
+                    <div key={item.id} className="snap-center first:pl-4 last:pr-4 md:first:pl-0 md:last:pr-0">
+                        <DesignCard item={item} />
+                    </div>
                 ))}
             </div>
 
-            {/* Mobile Indicator */}
-            <div className="flex justify-center gap-2 mt-6 md:hidden">
-                <div className="w-8 h-1 bg-sky-500 rounded-full opacity-50" />
-                <div className="w-2 h-1 bg-white/20 rounded-full" />
-                <div className="w-2 h-1 bg-white/20 rounded-full" />
-            </div>
+            {/* Gradient Fades for desktop */}
+            <div className="hidden lg:block absolute top-0 left-0 bottom-8 w-24 bg-gradient-to-r from-slate-950 to-transparent pointer-events-none z-10" />
+            <div className="hidden lg:block absolute top-0 right-0 bottom-8 w-24 bg-gradient-to-l from-slate-950 to-transparent pointer-events-none z-10" />
         </div>
     );
 };
