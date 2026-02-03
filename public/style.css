@@ -18,6 +18,34 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   width: 100%;
+  font-size: 16px;
+  /* Estilos base (mobile first) */
+}
+
+/* Tablet e telas médias */
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  body {
+    font-size: 20px;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* ================================================= */
@@ -47,6 +75,24 @@ header {
   width: 100%;
 }
 
+/* Mobile (padrão) */
+.header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding: 40px;
+  }
+}
+
 .header-container {
   width: 100%;
   max-width: 1200px;
@@ -55,12 +101,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-@media (min-width: 768px) {
-  .header-container {
-    padding: 0.8rem 1.5rem;
-  }
 }
 
 .brand a {
