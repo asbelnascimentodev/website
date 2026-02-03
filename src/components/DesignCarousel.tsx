@@ -11,12 +11,12 @@ interface DesignItem {
 }
 
 const designs: DesignItem[] = [
-    { id: 1, title: "Design de fisiculturismo", category: "DESIGN | PHOTOSHOP", src: "projetos photoshop/Bodybuilder.png", href: "projetos photoshop/Bodybuilder.png" },
-    { id: 2, title: "CARROSSEL POST INSTAGRAM", category: "IMAGEM CARROSSEL | PHOTOSHOP", src: "projetos photoshop/carrossel patricia 2.jpg", href: "projetos photoshop/carrossel patricia 2.jpg" },
-    { id: 3, title: "Criação de Logo e Identidade", category: "Design Gráfico | Photoshop", src: "projetos photoshop/cartao visita enrolados Jú.jpg", href: "projetos photoshop/cartao visita enrolados Jú.jpg" },
-    { id: 4, title: "Criação de POST-INSTAGRAM", category: "Design Gráfico | Photoshop", src: "projetos photoshop/arte pepper.jpg", href: "projetos photoshop/arte pepper.jpg" },
-    { id: 5, title: "Flyer Esportivo", category: "DESIGN | PHOTOSHOP", src: "projetos photoshop/harry kane  sport design.jpg", href: "projetos photoshop/harry kane  sport design.jpg" },
-    { id: 6, title: "Flyer Esportivo", category: "DESIGN | PHOTOSHOP", src: "projetos photoshop/corinthians post.jpg", href: "projetos photoshop/corinthians post.jpg" }
+    { id: 1, title: "Design de fisiculturismo", category: "DESIGN | PHOTOSHOP", src: "/projetos photoshop/Bodybuilder.png", href: "/projetos photoshop/Bodybuilder.png" },
+    { id: 2, title: "CARROSSEL POST INSTAGRAM", category: "IMAGEM CARROSSEL | PHOTOSHOP", src: "/projetos photoshop/carrossel patricia 2.jpg", href: "/projetos photoshop/carrossel patricia 2.jpg" },
+    { id: 3, title: "Criação de Logo e Identidade", category: "Design Gráfico | Photoshop", src: "/projetos photoshop/cartao visita enrolados Jú.jpg", href: "/projetos photoshop/cartao visita enrolados Jú.jpg" },
+    { id: 4, title: "Criação de POST-INSTAGRAM", category: "Design Gráfico | Photoshop", src: "/projetos photoshop/arte pepper.jpg", href: "/projetos photoshop/arte pepper.jpg" },
+    { id: 5, title: "Flyer Esportivo", category: "DESIGN | PHOTOSHOP", src: "/projetos photoshop/harry kane  sport design.jpg", href: "/projetos photoshop/harry kane  sport design.jpg" },
+    { id: 6, title: "Flyer Esportivo", category: "DESIGN | PHOTOSHOP", src: "/projetos photoshop/corinthians post.jpg", href: "/projetos photoshop/corinthians post.jpg" }
 ];
 
 const DesignCard = ({ item }: { item: DesignItem }) => {

@@ -9,14 +9,14 @@ interface QualityPhoto {
 }
 
 const photos: QualityPhoto[] = [
-    { id: 1, src: "Inspetor de qualidade/acompanhamento.jpeg", alt: "Acompanhamento" },
-    { id: 2, src: "Inspetor de qualidade/dentro do porao2.jpeg", alt: "Dentro do porão 2" },
-    { id: 3, src: "Inspetor de qualidade/proa.jpeg", alt: "Proa" },
-    { id: 4, src: "Inspetor de qualidade/dentro do porão.jpeg", alt: "Dentro do porão" },
-    { id: 5, src: "Inspetor de qualidade/talho navio de milho.jpeg", alt: "Talho navio de milho" },
-    { id: 6, src: "Inspetor de qualidade/vante.jpeg", alt: "Vante" },
-    { id: 7, src: "Inspetor de qualidade/operação1.jpeg", alt: "Operação 1" },
-    { id: 8, src: "Inspetor de qualidade/u7.jpeg", alt: "U7" }
+    { id: 1, src: "/Inspetor de qualidade/acompanhamento.jpeg", alt: "Acompanhamento" },
+    { id: 2, src: "/Inspetor de qualidade/dentro do porao2.jpeg", alt: "Dentro do porão 2" },
+    { id: 3, src: "/Inspetor de qualidade/proa.jpeg", alt: "Proa" },
+    { id: 4, src: "/Inspetor de qualidade/dentro do porão.jpeg", alt: "Dentro do porão" },
+    { id: 5, src: "/Inspetor de qualidade/talho navio de milho.jpeg", alt: "Talho navio de milho" },
+    { id: 6, src: "/Inspetor de qualidade/vante.jpeg", alt: "Vante" },
+    { id: 7, src: "/Inspetor de qualidade/operação1.jpeg", alt: "Operação 1" },
+    { id: 8, src: "/Inspetor de qualidade/u7.jpeg", alt: "U7" }
 ];
 
 const PhotoCarousel = ({ baseVelocity = -0.2 }: { baseVelocity?: number }) => {

@@ -11,17 +11,17 @@ interface Certificate {
 }
 
 const certificates: Certificate[] = [
-    { id: 1, title: "Amazon bedrock getting started", institution: "AMAZON", href: "certificados/certificado1.pdf" },
-    { id: 2, title: "Foundations of Prompt Engineer", institution: "AMAZON", href: "certificados/certificado2.pdf" },
-    { id: 3, title: "Comunicação SERVERxCLIENT", institution: "DIO", href: "certificados/certificado3.pdf" },
-    { id: 4, title: "Java: primeira aplicação", institution: "ALURA", href: "certificados/certificado4.pdf" },
-    { id: 5, title: "VERSIONAMENTO GIT E GITHUB", institution: "DIO", href: "certificados/certificado5.pdf" },
-    { id: 6, title: "English Fundamentals", institution: "Inglish test SANTANDER", href: "certificados/INGLÊS .pdf" },
-    { id: 7, title: "Getting Started with AWS for Games", institution: "AWS for Games", href: "certificados/certificado6.pdf" },
-    { id: 8, title: "COMEÇANDO EM PROGRAMAÇÃO", institution: "ALURA", href: "certificados/certificado7.pdf" },
-    { id: 9, title: "UX DESIGN UNIVERSO", institution: "ALURA", href: "certificados/certificado8.pdf" },
-    { id: 10, title: "DATA ANALYSIS SHEETS", institution: "ALURA", href: "certificados/certificado9.pdf" },
-    { id: 11, title: "Introdução Front-End", institution: "DIO", href: "certificados/certificado12.pdf" }
+    { id: 1, title: "Amazon bedrock getting started", institution: "AMAZON", href: "/certificados/certificado1.pdf" },
+    { id: 2, title: "Foundations of Prompt Engineer", institution: "AMAZON", href: "/certificados/certificado2.pdf" },
+    { id: 3, title: "Comunicação SERVERxCLIENT", institution: "DIO", href: "/certificados/certificado3.pdf" },
+    { id: 4, title: "Java: primeira aplicação", institution: "ALURA", href: "/certificados/certificado4.pdf" },
+    { id: 5, title: "VERSIONAMENTO GIT E GITHUB", institution: "DIO", href: "/certificados/certificado5.pdf" },
+    { id: 6, title: "English Fundamentals", institution: "Inglish test SANTANDER", href: "/certificados/INGLÊS .pdf" },
+    { id: 7, title: "Getting Started with AWS for Games", institution: "AWS for Games", href: "/certificados/certificado6.pdf" },
+    { id: 8, title: "COMEÇANDO EM PROGRAMAÇÃO", institution: "ALURA", href: "/certificados/certificado7.pdf" },
+    { id: 9, title: "UX DESIGN UNIVERSO", institution: "ALURA", href: "/certificados/certificado8.pdf" },
+    { id: 10, title: "DATA ANALYSIS SHEETS", institution: "ALURA", href: "/certificados/certificado9.pdf" },
+    { id: 11, title: "Introdução Front-End", institution: "DIO", href: "/certificados/certificado12.pdf" }
 ];
 
 const CertificateCard = ({ certificate, index }: { certificate: Certificate; index: number }) => {

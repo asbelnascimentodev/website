@@ -18,8 +18,8 @@ const projects: Project[] = [
         id: 1,
         name: "Brunno Matheus",
         description: "Transformação visual e estratégica focada em autoridade profissional e design moderno.",
-        beforeImg: "linkedinbrunoantes.jpeg",
-        afterImg: "linkedinbrunodepois.png",
+        beforeImg: "/linkedinbrunoantes.jpeg",
+        afterImg: "/linkedinbrunodepois.png",
         webCvLink: "https://brunno-matheus-382748740928.us-west1.run.app/",
         linkedinLink: "https://www.linkedin.com/in/asbel-nascimento-0a7530221/",
         improvements: [
@@ -34,8 +34,8 @@ const projects: Project[] = [
         id: 2,
         name: "Marcos Neves",
         description: "Reestruturação completa de perfil para transição de carreira e fortalecimento de marca pessoal.",
-        beforeImg: "linkedinmarcosantes.png",
-        afterImg: "linkedinmarcosdepois.png",
+        beforeImg: "/linkedinmarcosantes.png",
+        afterImg: "/linkedinmarcosdepois.png",
         webCvLink: "https://marcos-neves-portfolio-382748740928.us-west1.run.app/",
         linkedinLink: "https://www.linkedin.com/in/asbel-nascimento-0a7530221/",
         improvements: [
@@ -50,8 +50,8 @@ const projects: Project[] = [
         id: 3,
         name: "Alexya Guerra",
         description: "Branding pessoal e otimização de perfil focado em aumentar a visibilidade e impacto profissional.",
-        beforeImg: "linkedinalexyaantes.png",
-        afterImg: "linkedinalexyadepois.png",
+        beforeImg: "/linkedinalexyaantes.png",
+        afterImg: "/linkedinalexyadepois.png",
         webCvLink: "https://alexyaguerra.github.io/AlexyaGuerra/",
         linkedinLink: "https://www.linkedin.com/in/asbel-nascimento-0a7530221/",
         improvements: [
