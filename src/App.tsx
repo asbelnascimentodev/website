@@ -3,14 +3,22 @@ import { GradualSpacing } from "@/components/ui/gradual-spacing";
 import { TextGradientScroll } from "@/components/ui/text-gradient-scroll";
 import { MarqueeAnimation } from "@/components/ui/marquee-effect";
 import { motion } from "framer-motion";
-import { Linkedin, Instagram } from "lucide-react";
+import { Linkedin, Instagram, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { InteractiveSkills } from "@/components/InteractiveSkills";
+import { CertificatesGrid } from "@/components/CertificatesGrid";
+import { DesignCarousel } from "@/components/DesignCarousel";
+import { QualityInspector } from "@/components/QualityInspector";
+import { LinkedInProjects } from "@/components/LinkedInProjects";
 
 const App = () => {
     const skillsRoot = document.getElementById("skills-root");
     const aboutRoot = document.getElementById("about-root");
     const marqueeRoot = document.getElementById("marquee-root");
+    const certificadosRoot = document.getElementById("certificados-root");
+    const designsRoot = document.getElementById("designs-root");
+    const qualityRoot = document.getElementById("quality-inspector-root");
+    const linkedinRoot = document.getElementById("linkedin-root");
 
     return (
         <>
@@ -91,6 +99,48 @@ const App = () => {
                     </MarqueeAnimation>
                 </div>,
                 marqueeRoot
+            )}
+
+            {qualityRoot && createPortal(
+                <QualityInspector />,
+                qualityRoot
+            )}
+
+            {linkedinRoot && createPortal(
+                <LinkedInProjects />,
+                linkedinRoot
+            )}
+
+            {designsRoot && createPortal(
+                <div className="w-full flex flex-col items-center max-w-7xl mx-auto px-4 pt-16">
+                    <h2 className="text-4xl font-extrabold text-white mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                        Meus Trabalhos de Design
+                    </h2>
+                    <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
+                        Uma seleção de projetos visuais focados em identidade, social media e design esportivo.
+                    </p>
+                    <DesignCarousel />
+
+                    <div className="mt-16 text-center">
+                        <Button asChild variant="outline" className="min-w-[240px] h-12 text-base font-bold bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full group">
+                            <a href="https://www.instagram.com/asbeldsgn/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                                Ver Portfólio no Instagram
+                                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </a>
+                        </Button>
+                    </div>
+                </div>,
+                designsRoot
+            )}
+
+            {certificadosRoot && createPortal(
+                <div className="w-full flex flex-col items-center max-w-7xl mx-auto px-4 py-12">
+                    <h2 className="text-4xl font-extrabold text-white mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                        Meus Certificados
+                    </h2>
+                    <CertificatesGrid />
+                </div>,
+                certificadosRoot
             )}
 
             {skillsRoot && createPortal(
