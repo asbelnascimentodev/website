@@ -1,27 +1,27 @@
 
 document.querySelectorAll('nav ul li a').forEach(link => {
-  link.addEventListener('click', e => {
-    // Evita comportamento padrão
-    e.preventDefault();
-    
-    // Captura o destino (ex: #sobre)
-    const targetId = link.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
+    link.addEventListener('click', e => {
+        // Evita comportamento padrão
+        e.preventDefault();
 
-    // Remove qualquer animação anterior
-    document.querySelectorAll('.secao').forEach(sec => sec.classList.remove('animar-secao'));
+        // Captura o destino (ex: #sobre)
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
 
-    // Adiciona animação na seção clicada
-    targetSection.classList.add('animar-secao');
+        // Remove qualquer animação anterior
+        document.querySelectorAll('.secao').forEach(sec => sec.classList.remove('animar-secao'));
 
-    // Faz a rolagem suave
-    targetSection.scrollIntoView({ behavior: 'smooth' });
+        // Adiciona animação na seção clicada
+        targetSection.classList.add('animar-secao');
 
-    // Remove a classe depois da animação pra permitir repetir
-    setTimeout(() => {
-      targetSection.classList.remove('animar-secao');
-    }, 1000);
-  });
+        // Faz a rolagem suave
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+
+        // Remove a classe depois da animação pra permitir repetir
+        setTimeout(() => {
+            targetSection.classList.remove('animar-secao');
+        }, 1000);
+    });
 });
 
 
@@ -34,22 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentIndex = 0;
         const totalItems = designItems.length;
         // Tempo em milissegundos (5000ms = 5 segundos)
-        const delay = 5000; 
-        
+        const delay = 5000;
+
         // Define a largura de um item mais a margem (para rolagem precisa)
-        const itemWidth = designItems[0].offsetWidth + 20; // 20px é o margin-right definido no CSS
+        const itemWidth = designItems[0].offsetWidth + 24; // 24px é o gap definido no CSS (1.5rem)
 
         function nextSlide() {
             currentIndex++;
-            
+
             // Se chegou ao final, volta para o primeiro
             if (currentIndex >= totalItems) {
                 currentIndex = 0;
                 // Para uma transição instantânea de volta ao início
-                galeriaDesigns.scrollLeft = 0; 
+                galeriaDesigns.scrollLeft = 0;
             } else {
                 // Rola para a posição do próximo item
-                galeriaDesigns.scrollLeft = currentIndex * itemWidth; 
+                galeriaDesigns.scrollLeft = currentIndex * itemWidth;
             }
         }
 
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Obtém as coordenadas do mouse
             const x = e.clientX;
             const y = e.clientY;
-            
+
             // Calcula a porcentagem da posição na tela
             const xPercent = (x / window.innerWidth) * 100;
             const yPercent = (y / window.innerHeight) * 100;
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================
     // 2. EFEITO CLIQUE (Ondas)
     // =========================================================
-    
+
     body.addEventListener('click', (e) => {
         // Cria um novo elemento para a onda
         const ripple = document.createElement('div');
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Calcula a posição do clique e define a onda para começar lá
         const size = Math.max(window.innerWidth, window.innerHeight);
         const radius = size / 20; // Tamanho inicial da onda
-        
+
         ripple.style.width = ripple.style.height = `${radius}px`;
         ripple.style.left = `${e.clientX - radius / 2}px`;
         ripple.style.top = `${e.clientY - radius / 2}px`;
