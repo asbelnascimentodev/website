@@ -58,9 +58,9 @@ export const QualityInspector = () => {
                     INSPETOR DE QUALIDADE
                 </h2>
 
-                <div className="max-w-3xl mx-auto mb-10 md:mb-16">
-                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 xs:p-8 md:p-10 shadow-2xl">
-                        <p className="text-base md:text-xl leading-relaxed text-slate-200 font-medium text-center">
+                <div className="max-w-xl md:max-w-3xl mx-auto mb-8 md:mb-16">
+                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-5 xs:p-7 md:p-10 shadow-2xl">
+                        <p className="text-sm xs:text-base md:text-xl leading-relaxed text-slate-200 font-medium text-center">
                             Atuo como Inspetor de Qualidade Júnior, assegurando que processos, produtos e serviços estejam em estrita
                             conformidade com os padrões estabelecidos (ISO 9001). Realizo inspeções detalhadas, identifico não
                             conformidades e proponho melhorias. Minha atuação inclui inspeção de porões de navios, classificação de
