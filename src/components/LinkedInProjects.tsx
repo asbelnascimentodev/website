@@ -172,19 +172,19 @@ const CaseStudy = ({ project }: { project: Project }) => (
 
 export const LinkedInProjects = () => {
     return (
-        <div className="w-full py-24 flex flex-col items-center">
-            <div className="max-w-7xl mx-auto px-4 w-full">
-                <div className="text-center mb-24 px-4">
-                    <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-sky-400/50">
-                        Projetos LinkedIn
+        <div className="w-full py-12 md:py-24 flex flex-col items-center">
+            <div className="w-full">
+                <div className="text-center mb-16 md:mb-24 px-4">
+                    <h2 className="text-3xl xs:text-4xl md:text-7xl font-black text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-sky-400/50">
+                        PROJETOS LINKEDIN
                     </h2>
-                    <div className="h-1.5 w-32 bg-sky-500 mx-auto rounded-full mb-8 shadow-[0_0_20px_rgba(14,165,233,0.6)]" />
-                    <p className="text-slate-400 text-xl max-w-3xl mx-auto font-medium">
+                    <div className="h-1 w-24 bg-sky-500 mx-auto rounded-full mb-6 shadow-[0_0_20px_rgba(14,165,233,0.6)]" />
+                    <p className="text-slate-400 text-base md:text-xl max-w-3xl mx-auto font-medium">
                         Consultoria estratégica transformando perfis comuns em máquinas de atração de oportunidades e autoridade profissional.
                     </p>
                 </div>
 
-                <div className="space-y-40">
+                <div className="space-y-20 md:space-y-40">
                     {projects.map((project) => (
                         <CaseStudy key={project.id} project={project} />
                     ))}
