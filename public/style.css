@@ -7,6 +7,14 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -16,8 +24,6 @@ body {
   color: var(--text-main);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
-  overflow-x: hidden;
-  width: 100%;
   font-size: 16px;
   /* Estilos base (mobile first) */
 }
