@@ -82,13 +82,15 @@ const App = () => {
         <div className="w-full">
             {/* Hero Section */}
             <div className="flex flex-col items-center justify-center w-full min-h-[60vh] md:min-h-[80vh] px-4 py-16 md:py-24 mx-auto overflow-hidden">
-                <h1 className="text-lg xs:text-2xl md:text-3xl lg:text-4xl text-white font-medium mb-4 opacity-80 text-center">
+                <h1 className="text-xl xs:text-2xl md:text-3xl lg:text-4xl text-white font-medium mb-4 opacity-80 text-center">
                     Olá, eu sou
                 </h1>
-                <GradualSpacing
-                    text="ASBEL NASCIMENTO"
-                    className="text-[10vw] sm:text-7xl md:text-8xl lg:text-9xl font-black text-center w-full text-white tracking-tighter drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]"
-                />
+                <div className="w-full flex justify-center py-4">
+                    <GradualSpacing
+                        text="ASBEL NASCIMENTO"
+                        className="text-[12vw] xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]"
+                    />
+                </div>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -121,12 +123,12 @@ const App = () => {
                     transition={{ delay: 1.4, duration: 0.8 }}
                     className="flex flex-col xs:flex-row gap-4 mt-6 justify-center items-center w-full"
                 >
-                    <Button asChild variant="outline" className="w-full xs:w-auto h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-6">
+                    <Button asChild variant="outline" className="w-full xs:w-auto h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-xl px-6">
                         <a href="/Curriculo/RESUME ASBEL NASCIMENTO.pdf" target="_blank">
                             EN Resume
                         </a>
                     </Button>
-                    <Button asChild variant="outline" className="w-full xs:w-auto h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-6">
+                    <Button asChild variant="outline" className="w-full xs:w-auto h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-xl px-6">
                         <a href="https://pdflink.to/resumeasbel/" target="_blank">
                             PT Currículo
                         </a>
@@ -137,11 +139,11 @@ const App = () => {
             {/* Content Sections - Using createPortal to map to index.html roots but ensuring fluid width */}
             {aboutRoot && createPortal(
                 <div className="w-full max-w-[1200px] mx-auto px-4 py-8 md:py-16">
-                    <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Sobre Mim
                     </h2>
-                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-5 md:p-12 shadow-2xl max-h-[600px] overflow-y-auto custom-scrollbar w-full">
-                        <div className="text-sm xs:text-base md:text-xl leading-relaxed text-slate-200 font-medium whitespace-pre-line text-left break-words">
+                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl max-h-[500px] overflow-y-auto custom-scrollbar w-full">
+                        <div className="text-base md:text-xl leading-relaxed text-slate-200 font-medium whitespace-pre-line text-justify break-words">
                             Meu nome é Asbel Nascimento, Atualmente gerencio uma rede social do instagram de BOLOS ("didi_bolosofc"), com alguns videos e posts feito por mim. Também sou um Estudante de Desenvolvimento Web Júnior com grande interesse por tecnologia, design e inovação. Atualmente, possuo conhecimentos básicos em HTML, CSS, JavaScript, UX Design, python e Redes de Computadores e Lógica de Programação — áreas que venho aprimorando constantemente por meio de cursos e prática diária.
                             {"\n\n"}
                             Tenho um inglês intermediário, o que me permite me comunicar bem e manter conversas com estrangeiros sobre diversos assuntos, especialmente voltados à tecnologia.

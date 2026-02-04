@@ -184,7 +184,7 @@ export const LinkedInProjects = () => {
                     </p>
                 </div>
 
-                <div className="space-y-20 md:space-y-40">
+                <div className="space-y-40">
                     {projects.map((project) => (
                         <CaseStudy key={project.id} project={project} />
                     ))}

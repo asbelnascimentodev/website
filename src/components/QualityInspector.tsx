@@ -19,7 +19,7 @@ const photos: QualityPhoto[] = [
     { id: 8, src: "/Inspetor de qualidade/u7.jpeg", alt: "U7" }
 ];
 
-const PhotoCarousel = ({ baseVelocity = -0.2 }: { baseVelocity?: number }) => {
+const PhotoCarousel = ({ baseVelocity = -1.2 }: { baseVelocity?: number }) => {
     const baseX = useMotionValue(0);
     const x = useTransform(baseX, (v) => `${wrap(-25, 0, v)}%`);
 
@@ -29,12 +29,20 @@ const PhotoCarousel = ({ baseVelocity = -0.2 }: { baseVelocity?: number }) => {
     });
 
     return (
-        <div className="overflow-hidden whitespace-nowrap flex w-full relative py-2 xs:py-4">
-            <motion.div className="flex shrink-0 gap-4 xs:gap-6" style={{ x }}>
+        <div className="carousel-container relative w-full max-w-[800px] mx-auto overflow-hidden rounded-3xl">
+            {/* Vinheta/Vignette Overlay */}
+            <div
+                className="absolute inset-0 pointer-events-none z-10"
+                style={{
+                    background: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%)'
+                }}
+            />
+
+            <motion.div className="flex shrink-0 gap-2" style={{ x }}>
                 {[...photos, ...photos, ...photos, ...photos].map((photo, index) => (
                     <div
                         key={`${photo.id}-${index}`}
-                        className="flex-none w-[200px] xs:w-[280px] md:w-[400px] aspect-[4/3] rounded-2xl xs:rounded-3xl overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                        className="flex-none w-[240px] xs:w-[300px] h-[160px] xs:h-[200px] overflow-hidden rounded-xl"
                     >
                         <img
                             src={photo.src}
@@ -52,13 +60,13 @@ const PhotoCarousel = ({ baseVelocity = -0.2 }: { baseVelocity?: number }) => {
 export const QualityInspector = () => {
     return (
         <div className="w-full py-8 md:py-16 flex flex-col items-center overflow-hidden">
-            <div className="w-full max-w-2xl mx-auto px-4 mb-8 md:mb-16">
+            <div className="w-full max-w-xl mx-auto px-4 mb-8 md:mb-16">
                 <h2 className="text-2xl xs:text-3xl md:text-4xl font-extrabold text-white mb-6 md:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                     INSPETOR DE QUALIDADE
                 </h2>
 
-                <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-5 xs:p-8 md:p-10 shadow-2xl w-full">
-                    <p className="text-sm xs:text-base md:text-lg leading-relaxed text-slate-200 font-medium text-center md:text-justify overflow-wrap-break-word">
+                <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-5 xs:p-8 md:p-10 shadow-2xl w-full max-h-[250px] overflow-y-auto custom-scrollbar">
+                    <p className="text-sm xs:text-base md:text-lg leading-relaxed text-slate-200 font-medium text-justify overflow-wrap-break-word">
                         Atuo como Inspetor de Qualidade Júnior, assegurando que processos, produtos e serviços estejam em estrita
                         conformidade com os padrões estabelecidos (ISO 9001). Realizo inspeções detalhadas, identifico não
                         conformidades e proponho melhorias. Minha atuação inclui inspeção de porões de navios, classificação de
@@ -67,16 +75,8 @@ export const QualityInspector = () => {
                 </div>
             </div>
 
-            <div className="w-full relative py-6 xs:py-10">
-                <div
-                    className="w-full overflow-hidden"
-                    style={{
-                        maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
-                        WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
-                    }}
-                >
-                    <PhotoCarousel />
-                </div>
+            <div className="w-full relative px-4">
+                <PhotoCarousel />
             </div>
         </div>
     );
