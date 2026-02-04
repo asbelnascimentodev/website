@@ -81,8 +81,8 @@ const App = () => {
     return (
         <div className="w-full">
             {/* Hero Section */}
-            <div className="flex flex-col items-center justify-center w-full min-h-[60vh] md:min-h-[80vh] px-4 py-12 md:py-24 mx-auto overflow-hidden">
-                <h1 className="text-xl xs:text-2xl md:text-3xl lg:text-4xl text-white font-medium mb-4 opacity-80 text-center">
+            <div className="flex flex-col items-center justify-center w-full min-h-[60vh] md:min-h-[80vh] px-4 py-16 md:py-24 mx-auto overflow-hidden">
+                <h1 className="text-lg xs:text-2xl md:text-3xl lg:text-4xl text-white font-medium mb-4 opacity-80 text-center">
                     Olá, eu sou
                 </h1>
                 <GradualSpacing
@@ -137,11 +137,11 @@ const App = () => {
             {/* Content Sections - Using createPortal to map to index.html roots but ensuring fluid width */}
             {aboutRoot && createPortal(
                 <div className="w-full max-w-[1200px] mx-auto px-4 py-8 md:py-16">
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                    <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                         Sobre Mim
                     </h2>
-                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl max-h-[500px] overflow-y-auto custom-scrollbar w-full">
-                        <div className="text-base md:text-xl leading-relaxed text-slate-200 font-medium whitespace-pre-line text-justify md:text-left">
+                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-5 md:p-12 shadow-2xl max-h-[600px] overflow-y-auto custom-scrollbar w-full">
+                        <div className="text-sm xs:text-base md:text-xl leading-relaxed text-slate-200 font-medium whitespace-pre-line text-left break-words">
                             Meu nome é Asbel Nascimento, Atualmente gerencio uma rede social do instagram de BOLOS ("didi_bolosofc"), com alguns videos e posts feito por mim. Também sou um Estudante de Desenvolvimento Web Júnior com grande interesse por tecnologia, design e inovação. Atualmente, possuo conhecimentos básicos em HTML, CSS, JavaScript, UX Design, python e Redes de Computadores e Lógica de Programação — áreas que venho aprimorando constantemente por meio de cursos e prática diária.
                             {"\n\n"}
                             Tenho um inglês intermediário, o que me permite me comunicar bem e manter conversas com estrangeiros sobre diversos assuntos, especialmente voltados à tecnologia.

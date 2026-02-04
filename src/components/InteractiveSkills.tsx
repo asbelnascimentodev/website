@@ -88,7 +88,7 @@ export function InteractiveSkills() {
                                         {category.skills.map((skill) => (
                                             <li key={skill} className="flex items-center gap-2 text-slate-400 text-[11px] xs:text-xs md:text-sm">
                                                 <div className="w-1 h-1 xs:w-1.5 xs:h-1.5 rounded-full bg-sky-500/50 shrink-0" />
-                                                <span className="truncate">{skill}</span>
+                                                <span className="">{skill}</span>
                                             </li>
                                         ))}
                                     </ul>

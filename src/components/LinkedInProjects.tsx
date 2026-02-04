@@ -65,12 +65,12 @@ const projects: Project[] = [
 ];
 
 const CaseStudy = ({ project }: { project: Project }) => (
-    <div className="mb-16 md:mb-32 last:mb-0 w-full">
+    <div className="mb-12 md:mb-32 last:mb-0 w-full">
         <div className="text-center mb-10 md:mb-16 px-4">
             <h3 className="text-xl xs:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-4">
                 Case: {project.name}
             </h3>
-            <p className="text-slate-400 text-sm xs:text-base md:text-lg max-w-2xl mx-auto">
+            <p className="text-slate-400 text-sm xs:text-base md:text-lg max-w-2xl mx-auto break-words">
                 {project.description}
             </p>
         </div>
@@ -184,7 +184,7 @@ export const LinkedInProjects = () => {
                     </p>
                 </div>
 
-                <div className="space-y-40">
+                <div className="space-y-20 md:space-y-40">
                     {projects.map((project) => (
                         <CaseStudy key={project.id} project={project} />
                     ))}
