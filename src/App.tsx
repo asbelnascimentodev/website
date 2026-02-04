@@ -35,23 +35,38 @@ const App = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.8 }}
-                    className="flex flex-col xs:flex-row gap-4 xs:gap-6 mt-10 justify-center items-center w-full"
+                    className="flex flex-col gap-6 mt-10 items-center w-full"
                 >
-                    <Button asChild variant="outline" className="w-full xs:w-auto min-w-[200px] h-12 text-sm xs:text-base font-bold bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-8">
-                        <a href="#sobre">
-                            Saiba Mais Sobre Mim
-                        </a>
-                    </Button>
-
-                    <div className="flex gap-4 items-center">
-                        <Button asChild variant="outline" size="icon" className="w-12 h-12 bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full">
-                            <a href="https://www.linkedin.com/in/asbeldev/" target="_blank" rel="noopener noreferrer">
-                                <Linkedin className="w-5 h-5" />
+                    <div className="flex flex-col xs:flex-row gap-4 xs:gap-6 justify-center items-center w-full">
+                        <Button asChild variant="outline" className="w-full xs:w-auto min-w-[200px] h-12 text-sm xs:text-base font-bold bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-8">
+                            <a href="#sobre">
+                                Saiba Mais Sobre Mim
                             </a>
                         </Button>
-                        <Button asChild variant="outline" size="icon" className="w-12 h-12 bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full">
-                            <a href="https://www.instagram.com/eubebel.ofc/" target="_blank" rel="noopener noreferrer">
-                                <Instagram className="w-5 h-5" />
+
+                        <div className="flex gap-4 items-center">
+                            <Button asChild variant="outline" size="icon" className="w-12 h-12 bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full">
+                                <a href="https://www.linkedin.com/in/asbeldev/" target="_blank" rel="noopener noreferrer">
+                                    <Linkedin className="w-5 h-5" />
+                                </a>
+                            </Button>
+                            <Button asChild variant="outline" size="icon" className="w-12 h-12 bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full">
+                                <a href="https://www.instagram.com/eubebel.ofc/" target="_blank" rel="noopener noreferrer">
+                                    <Instagram className="w-5 h-5" />
+                                </a>
+                            </Button>
+                        </div>
+                    </div>
+
+                    <div className="flex flex-row gap-4 justify-center items-center w-full">
+                        <Button asChild variant="outline" className="h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-6">
+                            <a href="/Curriculo/RESUME ASBEL NASCIMENTO.pdf">
+                                EN Resume
+                            </a>
+                        </Button>
+                        <Button asChild variant="outline" className="h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-6">
+                            <a href="https://pdflink.to/resumeasbel/" target="_blank" rel="noopener noreferrer">
+                                PT Currículo
                             </a>
                         </Button>
                     </div>
