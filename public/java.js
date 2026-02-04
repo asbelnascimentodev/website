@@ -1,28 +1,8 @@
-
+/* 
 document.querySelectorAll('nav ul li a').forEach(link => {
-    link.addEventListener('click', e => {
-        // Evita comportamento padrão
-        e.preventDefault();
-
-        // Captura o destino (ex: #sobre)
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-
-        // Remove qualquer animação anterior
-        document.querySelectorAll('.secao').forEach(sec => sec.classList.remove('animar-secao'));
-
-        // Adiciona animação na seção clicada
-        targetSection.classList.add('animar-secao');
-
-        // Faz a rolagem suave
-        targetSection.scrollIntoView({ behavior: 'smooth' });
-
-        // Remove a classe depois da animação pra permitir repetir
-        setTimeout(() => {
-            targetSection.classList.remove('animar-secao');
-        }, 1000);
-    });
+    ... handled by Lenis in App.tsx ...
 });
+*/
 
 
 document.addEventListener('DOMContentLoaded', () => {

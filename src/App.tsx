@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { createPortal } from "react-dom";
+import Lenis from "lenis";
 import { GradualSpacing } from "@/components/ui/gradual-spacing";
 import { TextGradientScroll } from "@/components/ui/text-gradient-scroll";
 import { MarqueeAnimation } from "@/components/ui/marquee-effect";
@@ -20,6 +22,62 @@ const App = () => {
     const qualityRoot = document.getElementById("quality-inspector-root");
     const linkedinRoot = document.getElementById("linkedin-root");
 
+    useEffect(() => {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        function raf(time: number) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        // Handle internal links in index.html and public/java.js
+        // We can let Lenis handle them by listening to clicks or just using lenis.scrollTo
+        const handleAnchorClick = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            const anchor = target.closest('a');
+            if (anchor && anchor.hash && anchor.origin === window.location.origin) {
+                const targetId = anchor.hash;
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    e.preventDefault();
+
+                    // Add animation effect from java.js
+                    if (targetElement.classList.contains('secao')) {
+                        document.querySelectorAll('.secao').forEach(sec => sec.classList.remove('animar-secao'));
+                        targetElement.classList.add('animar-secao');
+                        setTimeout(() => {
+                            targetElement.classList.remove('animar-secao');
+                        }, 1000);
+                    }
+
+                    lenis.scrollTo(targetElement as HTMLElement, {
+                        duration: 1.5,
+                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+                    });
+                }
+            }
+        };
+
+        document.addEventListener('click', handleAnchorClick);
+
+        return () => {
+            lenis.destroy();
+            document.removeEventListener('click', handleAnchorClick);
+        };
+    }, []);
+
     return (
         <div className="w-full">
             {/* Hero Section */}
@@ -35,41 +93,44 @@ const App = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.8 }}
-                    className="flex flex-col gap-6 mt-10 items-center w-full"
+                    className="flex flex-col xs:flex-row gap-4 xs:gap-6 mt-10 justify-center items-center w-full"
                 >
-                    <div className="flex flex-col xs:flex-row gap-4 xs:gap-6 justify-center items-center w-full">
-                        <Button asChild variant="outline" className="w-full xs:w-auto min-w-[200px] h-12 text-sm xs:text-base font-bold bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-8">
-                            <a href="#sobre">
-                                Saiba Mais Sobre Mim
+                    <Button asChild variant="outline" className="w-full xs:w-auto min-w-[200px] h-12 text-sm xs:text-base font-bold bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-8">
+                        <a href="#sobre">
+                            Saiba Mais Sobre Mim
+                        </a>
+                    </Button>
+
+                    <div className="flex gap-4 items-center">
+                        <Button asChild variant="outline" size="icon" className="w-12 h-12 bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full">
+                            <a href="https://www.linkedin.com/in/asbeldev/" target="_blank" rel="noopener noreferrer">
+                                <Linkedin className="w-5 h-5" />
                             </a>
                         </Button>
-
-                        <div className="flex gap-4 items-center">
-                            <Button asChild variant="outline" size="icon" className="w-12 h-12 bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full">
-                                <a href="https://www.linkedin.com/in/asbeldev/" target="_blank" rel="noopener noreferrer">
-                                    <Linkedin className="w-5 h-5" />
-                                </a>
-                            </Button>
-                            <Button asChild variant="outline" size="icon" className="w-12 h-12 bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full">
-                                <a href="https://www.instagram.com/eubebel.ofc/" target="_blank" rel="noopener noreferrer">
-                                    <Instagram className="w-5 h-5" />
-                                </a>
-                            </Button>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-row gap-4 justify-center items-center w-full">
-                        <Button asChild variant="outline" className="h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-6">
-                            <a href="/Curriculo/RESUME ASBEL NASCIMENTO.pdf">
-                                EN Resume
-                            </a>
-                        </Button>
-                        <Button asChild variant="outline" className="h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-6">
-                            <a href="https://pdflink.to/resumeasbel/" target="_blank" rel="noopener noreferrer">
-                                PT Currículo
+                        <Button asChild variant="outline" size="icon" className="w-12 h-12 bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full">
+                            <a href="https://www.instagram.com/eubebel.ofc/" target="_blank" rel="noopener noreferrer">
+                                <Instagram className="w-5 h-5" />
                             </a>
                         </Button>
                     </div>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.4, duration: 0.8 }}
+                    className="flex flex-col xs:flex-row gap-4 mt-6 justify-center items-center w-full"
+                >
+                    <Button asChild variant="outline" className="w-full xs:w-auto h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-6">
+                        <a href="/Curriculo/RESUME ASBEL NASCIMENTO.pdf" target="_blank">
+                            EN Resume
+                        </a>
+                    </Button>
+                    <Button asChild variant="outline" className="w-full xs:w-auto h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-6">
+                        <a href="https://pdflink.to/resumeasbel/" target="_blank">
+                            PT Currículo
+                        </a>
+                    </Button>
                 </motion.div>
             </div>
 
