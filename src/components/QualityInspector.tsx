@@ -52,7 +52,7 @@ const PhotoCarousel = ({ baseVelocity = -0.2 }: { baseVelocity?: number }) => {
 export const QualityInspector = () => {
     return (
         <div className="w-full py-8 md:py-16 flex flex-col items-center overflow-hidden">
-            <div className="w-full max-w-3xl mx-auto px-4 mb-8 md:mb-16">
+            <div className="w-full max-w-2xl mx-auto px-4 mb-8 md:mb-16">
                 <h2 className="text-2xl xs:text-3xl md:text-4xl font-extrabold text-white mb-6 md:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                     INSPETOR DE QUALIDADE
                 </h2>
@@ -68,14 +68,13 @@ export const QualityInspector = () => {
             </div>
 
             <div className="w-full relative py-6 xs:py-10">
-                {/* Vignette Effect - Responsive width */}
-                <div className="absolute top-0 left-0 bottom-0 w-[10%] xs:w-[20%] md:w-[35%] bg-gradient-to-r from-slate-950 via-slate-950/90 to-transparent z-20 pointer-events-none" />
-                <div className="absolute top-0 right-0 bottom-0 w-[10%] xs:w-[20%] md:w-[35%] bg-gradient-to-l from-slate-950 via-slate-950/90 to-transparent z-20 pointer-events-none" />
-
-                {/* Secondary inner vignette for smoother transition */}
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/20 via-transparent to-slate-950/20 z-10 pointer-events-none" />
-
-                <div className="w-full overflow-hidden">
+                <div
+                    className="w-full overflow-hidden"
+                    style={{
+                        maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+                        WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+                    }}
+                >
                     <PhotoCarousel />
                 </div>
             </div>

@@ -91,7 +91,12 @@ export const DesignCarousel = () => {
             <div
                 ref={containerRef}
                 className="flex gap-4 xs:gap-6 overflow-x-auto pb-8 pt-4 no-scrollbar snap-x snap-mandatory"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                style={{
+                    scrollbarWidth: 'none',
+                    msOverflowStyle: 'none',
+                    maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+                }}
             >
                 {designs.map((item) => (
                     <div key={item.id} className="snap-center first:pl-4 last:pr-4 md:first:pl-0 md:last:pr-0">
@@ -99,10 +104,6 @@ export const DesignCarousel = () => {
                     </div>
                 ))}
             </div>
-
-            {/* Gradient Fades for desktop */}
-            <div className="hidden lg:block absolute top-0 left-0 bottom-8 w-24 bg-gradient-to-r from-slate-950 to-transparent pointer-events-none z-10" />
-            <div className="hidden lg:block absolute top-0 right-0 bottom-8 w-24 bg-gradient-to-l from-slate-950 to-transparent pointer-events-none z-10" />
         </div>
     );
 };
