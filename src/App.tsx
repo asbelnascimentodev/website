@@ -23,13 +23,13 @@ const App = () => {
     return (
         <div className="w-full">
             {/* Hero Section */}
-            <div className="flex flex-col items-center justify-center w-full min-h-[60vh] md:min-h-[80vh] px-4 py-12 md:py-24 max-w-[1200px] mx-auto">
-                <h1 className="text-2xl md:text-4xl text-white font-medium mb-4 opacity-80 text-center">
+            <div className="flex flex-col items-center justify-center w-full min-h-[60vh] md:min-h-[80vh] px-4 py-12 md:py-24 mx-auto overflow-hidden">
+                <h1 className="text-xl xs:text-2xl md:text-3xl lg:text-4xl text-white font-medium mb-4 opacity-80 text-center">
                     Olá, eu sou
                 </h1>
                 <GradualSpacing
                     text="ASBEL NASCIMENTO"
-                    className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-center w-full text-white tracking-tighter drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]"
+                    className="text-[10vw] sm:text-7xl md:text-8xl lg:text-9xl font-black text-center w-full text-white tracking-tighter drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]"
                 />
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
