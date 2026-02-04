@@ -152,8 +152,6 @@ const App = () => {
                             {"\n\n"}
                             Atualmente, busco uma oportunidade em uma empresa onde eu possa evoluir profissionalmente, aplicar meu conhecimento técnico, e principalmente aprender na prática com uma equipe experiente, aprimorando minhas habilidades dia após dia.
                             {"\n\n"}
-                            Tenho interesse especial na área de Redes e Segurança da Informação, e meu grande objetivo é seguir carreira como Especialista em Segurança da Informação, aprofundando meus estudos e conquistando certificações reconhecidas.
-                            {"\n\n"}
                             Sou curioso, dedicado e gosto de aprender com desafios — acredito que cada projeto é uma nova chance de crescimento pessoal e profissional. 🚀
                         </div>
                     </div>
