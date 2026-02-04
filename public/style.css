@@ -136,14 +136,15 @@ header.scrolled {
 }
 
 header.scrolled .header-nav {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
   width: fit-content;
-  min-width: 320px;
-  padding: 0.3rem 2rem;
+  max-width: 95%;
+  padding: 0.5rem 2rem;
+  gap: 2rem;
 }
 
 .brand a {
@@ -179,6 +180,18 @@ header.scrolled .brand a {
 
   .nav-links {
     display: none;
+  }
+
+  /* Na versão pílula (scrolled), mostramos os links mesmo no mobile se couber, 
+     ou mantemos minimalista conforme o print */
+  header.scrolled .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  header.scrolled .brand {
+    display: none;
+    /* Esconde o nome na pílula mobile para dar espaço aos links */
   }
 }
 

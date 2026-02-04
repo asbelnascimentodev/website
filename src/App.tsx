@@ -88,7 +88,7 @@ const App = () => {
                 <div className="w-full flex justify-center py-4">
                     <GradualSpacing
                         text="ASBEL NASCIMENTO"
-                        className="text-[12vw] xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter drop-shadow-[0_0_30px_rgba(56,189,248,0.3)]"
+                        className="text-[8vw] xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter"
                     />
                 </div>
                 <motion.div
