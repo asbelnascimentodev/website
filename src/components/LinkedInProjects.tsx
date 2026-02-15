@@ -153,17 +153,6 @@ const CaseStudy = ({ project }: { project: Project }) => (
                             <ExternalLink className="w-4 h-4 md:w-5 md:h-5 text-sky-400 group-hover:scale-110 transition-transform" />
                         </a>
                     </motion.div>
-                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                        <a
-                            href={project.linkedinLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-full bg-sky-500 hover:bg-sky-400 text-white font-bold text-sm md:text-base px-6 md:px-8 py-3.5 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-3 transition-colors shadow-[0_10px_30px_rgba(14,165,233,0.3)]"
-                        >
-                            Ver No LinkedIn
-                            <Linkedin className="w-4 h-4 md:w-5 md:h-5" />
-                        </a>
-                    </motion.div>
                 </div>
             </div>
         </motion.div>

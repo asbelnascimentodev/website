@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import { InteractiveSkills } from "@/components/InteractiveSkills";
 import { CertificatesGrid } from "@/components/CertificatesGrid";
 import { DesignCarousel } from "@/components/DesignCarousel";
-import { QualityInspector } from "@/components/QualityInspector";
 import { LinkedInProjects } from "@/components/LinkedInProjects";
 
 const App = () => {
@@ -19,7 +18,6 @@ const App = () => {
     const marqueeRoot = document.getElementById("marquee-root");
     const certificadosRoot = document.getElementById("certificados-root");
     const designsRoot = document.getElementById("designs-root");
-    const qualityRoot = document.getElementById("quality-inspector-root");
     const linkedinRoot = document.getElementById("linkedin-root");
 
     useEffect(() => {
@@ -123,10 +121,8 @@ const App = () => {
                     transition={{ delay: 1.4, duration: 0.8 }}
                     className="flex flex-col xs:flex-row gap-4 mt-6 justify-center items-center w-full"
                 >
-                    <Button asChild variant="outline" className="w-full xs:w-auto h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-xl px-6">
-                        <a href="/Curriculo/RESUME ASBEL NASCIMENTO.pdf" target="_blank">
-                            EN Resume
-                        </a>
+                    <Button disabled variant="outline" className="w-full xs:w-auto h-10 text-xs font-bold bg-slate-800/50 border-white/10 text-slate-500 cursor-not-allowed rounded-xl px-6">
+                        EN Resume (Em Andamento)
                     </Button>
                     <Button asChild variant="outline" className="w-full xs:w-auto h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-xl px-6">
                         <a href="https://pdflink.to/b929d593/" target="_blank">
@@ -179,10 +175,6 @@ const App = () => {
                 marqueeRoot
             )}
 
-            {qualityRoot && createPortal(
-                <QualityInspector />,
-                qualityRoot
-            )}
 
             {linkedinRoot && createPortal(
                 <div className="w-full px-4">
