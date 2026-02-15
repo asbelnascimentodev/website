@@ -180,9 +180,7 @@ const App = () => {
             )}
 
             {qualityRoot && createPortal(
-                <div className="w-full">
-                    <QualityInspector />
-                </div>,
+                <QualityInspector />,
                 qualityRoot
             )}
 

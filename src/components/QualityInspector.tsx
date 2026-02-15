@@ -59,33 +59,26 @@ const PhotoCarousel = ({ baseVelocity = -1.2 }: { baseVelocity?: number }) => {
 
 export const QualityInspector = () => {
     return (
-        <div className="w-full py-8 md:py-16 flex flex-col items-center overflow-hidden">
+        <div className="w-full max-w-[1200px] mx-auto px-4 py-8 md:py-16">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="w-full max-w-[1200px] mx-auto px-4 mb-8 md:mb-16"
+                className="w-full"
             >
                 <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                     INSPETOR DE QUALIDADE
                 </h2>
 
-                <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl w-full max-h-[500px] overflow-y-auto custom-scrollbar">
-                    <p className="text-base md:text-xl leading-relaxed text-slate-200 font-medium text-justify overflow-wrap-break-word">
-                        Atuo como Inspetor de Qualidade Júnior,
-                        assegurando que processos, produtos e serviços estejam em
-                        estrita conformidade com os padrões estabelecidos
-                        (ISO 9001). Realizo inspeções detalhadas, identifico não
-                        conformidades e proponho melhorias. Minha atuação inclui
-                        inspeção de porões de navios, classificação de
-                        grãos, e análise de RI no açúcar, bem como o acompanhamento
-                        de descarga e carregamento de produtos.
-                    </p>
+                <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl max-h-[500px] overflow-y-auto custom-scrollbar w-full mb-8 md:mb-16">
+                    <div className="text-base md:text-xl leading-relaxed text-slate-200 font-medium whitespace-pre-line text-justify break-words">
+                        Atuo como Inspetor de Qualidade Júnior, assegurando que processos, produtos e serviços estejam em estrita conformidade com os padrões estabelecidos (ISO 9001). Realizo inspeções detalhadas, identifico não conformidades e proponho melhorias. Minha atuação inclui inspeção de porões de navios, classificação de grãos, e análise de RI no açúcar, bem como o acompanhamento de descarga e carregamento de produtos.
+                    </div>
                 </div>
             </motion.div>
 
-            <div className="w-full relative px-4">
+            <div className="w-full relative">
                 <PhotoCarousel />
             </div>
         </div>
