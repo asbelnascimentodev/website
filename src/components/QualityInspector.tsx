@@ -65,14 +65,14 @@ export const QualityInspector = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="w-full max-w-lg mx-auto px-4 mb-8 md:mb-16"
+                className="w-full max-w-[1200px] mx-auto px-4 mb-8 md:mb-16"
             >
-                <h2 className="text-2xl xs:text-3xl md:text-4xl font-extrabold text-white mb-6 md:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
+                <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
                     INSPETOR DE QUALIDADE
                 </h2>
 
-                <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-5 xs:p-8 md:p-10 shadow-2xl w-full max-h-[200px] overflow-y-auto custom-scrollbar">
-                    <p className="text-sm xs:text-base md:text-lg leading-relaxed text-slate-200 font-medium text-justify overflow-wrap-break-word">
+                <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl w-full max-h-[500px] overflow-y-auto custom-scrollbar">
+                    <p className="text-base md:text-xl leading-relaxed text-slate-200 font-medium text-justify overflow-wrap-break-word">
                         Atuo como Inspetor de Qualidade Júnior, assegurando que processos, produtos e serviços estejam em estrita
                         conformidade com os padrões estabelecidos (ISO 9001). Realizo inspeções detalhadas, identifico não
                         conformidades e proponho melhorias. Minha atuação inclui inspeção de porões de navios, classificação de
