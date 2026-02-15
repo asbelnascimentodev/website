@@ -23,7 +23,7 @@ const DesignCard = ({ item }: { item: DesignItem }) => {
     return (
         <motion.div
             whileHover={{ y: -10 }}
-            className="relative flex-none w-[260px] xs:w-[280px] sm:w-[320px] md:w-[350px] aspect-[4/5] bg-slate-900/40 rounded-3xl overflow-hidden border border-white/10 group cursor-pointer"
+            className="relative flex-none w-[180px] xs:w-[200px] sm:w-[220px] md:w-[240px] aspect-[4/5] bg-slate-900/40 rounded-3xl overflow-hidden border border-white/10 group cursor-pointer"
             onClick={() => window.open(item.href, '_blank')}
         >
             <img
@@ -55,54 +55,33 @@ const DesignCard = ({ item }: { item: DesignItem }) => {
 };
 
 export const DesignCarousel = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    const scroll = (direction: 'left' | 'right') => {
-        if (containerRef.current) {
-            const scrollAmount = direction === 'left' ? -containerRef.current.offsetWidth * 0.8 : containerRef.current.offsetWidth * 0.8;
-            containerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-    };
-
     return (
-        <div className="w-full relative group/carousel">
-            {/* Navigation Buttons - Hidden on touch devices/small screens by default, shown on md+ hover */}
-            <div className="absolute top-1/2 -left-2 md:-left-4 -translate-y-1/2 z-20 opacity-0 md:group-hover/carousel:opacity-100 transition-opacity duration-300 hidden md:block">
-                <button
-                    onClick={() => scroll('left')}
-                    className="p-3 rounded-full bg-slate-900/80 border border-white/10 text-white hover:bg-sky-400 hover:text-slate-900 transition-all shadow-xl backdrop-blur-md"
-                    aria-label="Anterior"
-                >
-                    <ChevronLeft className="w-6 h-6" />
-                </button>
-            </div>
-
-            <div className="absolute top-1/2 -right-2 md:-right-4 -translate-y-1/2 z-20 opacity-0 md:group-hover/carousel:opacity-100 transition-opacity duration-300 hidden md:block">
-                <button
-                    onClick={() => scroll('right')}
-                    className="p-3 rounded-full bg-slate-900/80 border border-white/10 text-white hover:bg-sky-400 hover:text-slate-900 transition-all shadow-xl backdrop-blur-md"
-                    aria-label="Próximo"
-                >
-                    <ChevronRight className="w-6 h-6" />
-                </button>
-            </div>
-
-            {/* Carousel Container */}
+        <div className="w-full relative overflow-hidden py-4">
             <div
-                ref={containerRef}
-                className="flex gap-4 xs:gap-6 overflow-x-auto pb-8 pt-4 no-scrollbar snap-x snap-mandatory"
+                className="flex w-fit"
                 style={{
-                    scrollbarWidth: 'none',
-                    msOverflowStyle: 'none',
                     maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
                     WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
                 }}
             >
-                {designs.map((item) => (
-                    <div key={item.id} className="snap-center first:pl-4 last:pr-4 md:first:pl-0 md:last:pr-0">
-                        <DesignCard item={item} />
-                    </div>
-                ))}
+                <motion.div
+                    animate={{
+                        x: [0, "-50%"],
+                    }}
+                    transition={{
+                        duration: 15,
+                        ease: "linear",
+                        repeat: Infinity,
+                    }}
+                    className="flex gap-4 md:gap-6 px-4 md:px-0"
+                >
+                    {/* Duplicate the array to create a seamless loop */}
+                    {[...designs, ...designs].map((item, idx) => (
+                        <div key={`${item.id}-${idx}`} className="flex-none">
+                            <DesignCard item={item} />
+                        </div>
+                    ))}
+                </motion.div>
             </div>
         </div>
     );

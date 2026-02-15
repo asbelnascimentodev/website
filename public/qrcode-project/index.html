@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QR Code | Asbel Nascimento</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #020617;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --sky: #38bdf8;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 40%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            padding: 2rem;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px border-white/10;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 1.5rem;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .icon-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, var(--sky));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--sky);
+            margin-bottom: 0.5rem;
+            margin-left: 0.5rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--sky);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--sky);
+            border: none;
+            border-radius: 1rem;
+            color: var(--bg);
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+            filter: brightness(1.1);
+        }
+
+        .view-code-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            padding: 0.75rem 1rem;
+            margin-top: 1.5rem;
+            width: 100%;
+            border-radius: 0.75rem;
+            font-weight: 600;
+        }
+
+        .view-code-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-color: var(--sky);
+            transform: none;
+            box-shadow: none;
+        }
+
+        #qrcode-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            display: none;
+            justify-content: center;
+            margin: 0 auto;
+            width: fit-content;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: scaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .footer-text {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: #0f172a;
+            width: 100%;
+            max-width: 800px;
+            max-height: 80vh;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 1.25rem;
+            color: var(--sky);
+            font-weight: 800;
+        }
+
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 2rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: white;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        pre {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: left;
+        }
+
+        code {
+            color: #d1d5db;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            display: block;
+            white-space: pre-wrap;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            width: auto;
+            border-radius: 0.75rem;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="icon-container">
+            <img src="me.png" alt="Icon">
+        </div>
+        <h1>Gerador de QR Code</h1>
+        <p>Crie seus QR Codes instantaneamente com links ou textos.</p>
+
+        <div class="input-group">
+            <label for="url-input">Seu Link / Texto</label>
+            <input type="text" id="url-input" placeholder="https://exemplo.com" autocomplete="off">
+        </div>
+
+        <button onclick="generateQR()">Gerar QR Code</button>
+
+        <div id="qrcode-container">
+            <div id="qrcode"></div>
+        </div>
+
+        <button class="view-code-btn" onclick="toggleModal(true)">Ver Código Python</button>
+
+        <p class="footer-text">&copy; 2025 Asbel Nascimento</p>
+    </div>
+
+    <!-- Code Modal -->
+    <div id="code-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Código Backend (Python)</h2>
+                <button class="modal-close" onclick="toggleModal(false)">&times;</button>
+            </div>
+            <div class="modal-body">
+                <pre><code>import qrcode
+import tkinter as tk
+from PIL import Image, ImageTk
+from tkinter import messagebox
+
+# Cria a janela principal
+janela = tk.Tk()
+janela.title("qrcode-generator")
+janela.geometry("500x500")
+
+icone = ImageTk.PhotoImage(Image.open("me.png"))
+janela.iconphoto(True, icone)
+
+# Título
+label = tk.Label(janela, text="Create your qrcode with link")
+label.pack(pady=5)
+
+# Campo texto
+label = tk.Label(janela, text="Your Link")
+label.pack(pady=10)
+
+entrada = tk.Entry(janela, width=30)
+entrada.pack(pady=3)
+
+# Campo do QRCode
+label = tk.Label(janela, text="Your Qrcode")
+label.pack(pady=15)
+
+# Label que exibirá a imagem
+label_imagem = tk.Label(janela)
+label_imagem.pack(pady=5)
+
+# Função de gerar QRCode
+def gerar_qrcode():
+    url = entrada.get()
+
+    if not url:
+        messagebox.showwarning("Aviso", "Digite um link ou texto!")
+        return
+
+    img = qrcode.make(url)
+    img = img.resize((200, 200))
+
+    img_tk = ImageTk.PhotoImage(img)
+
+    label_imagem.config(image=img_tk)
+    label_imagem.image = img_tk  # evita garbage collector
+
+    # Salva o arquivo
+    img.save("qrcode.png")
+
+# Botão gerar
+botao_gerar = tk.Button(janela, text="Gerar QR Code", command=gerar_qrcode)
+botao_gerar.pack(pady=10)
+
+# Botão fechar
+botao_sair = tk.Button(janela, text="Fechar", command=janela.quit)
+botao_sair.pack(side="bottom", pady=5)
+
+# Inicia o loop
+janela.mainloop()</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const qrContainer = document.getElementById('qrcode-container');
+        const qrDiv = document.getElementById('qrcode');
+        const input = document.getElementById('url-input');
+
+        function generateQR() {
+            const value = input.value.trim();
+
+            if (!value) {
+                alert("Por favor, digite um link ou texto!");
+                return;
+            }
+
+            // Clear previous QR
+            qrDiv.innerHTML = "";
+            qrContainer.style.display = "flex";
+
+            new QRCode(qrDiv, {
+                text: value,
+                width: 200,
+                height: 200,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        function toggleModal(show) {
+            const modal = document.getElementById('code-modal');
+            modal.classList.toggle('active', show);
+            document.body.style.overflow = show ? 'hidden' : '';
+        }
+
+        // Close modal on click outside
+        document.getElementById('code-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('code-modal')) toggleModal(false);
+        });
+
+        // Generate on Enter
+        input.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                generateQR();
+            }
+        });
+    </script>
+</body>
+
+</html>

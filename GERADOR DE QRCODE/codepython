@@ -1,0 +1,6 @@
+url = entrada.get()
+
+img = qrcode.make(url)
+
+img.save("qrcode.png")
+print("qrcode generated Sucessfully")

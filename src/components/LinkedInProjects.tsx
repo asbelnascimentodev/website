@@ -68,7 +68,7 @@ const CaseStudy = ({ project }: { project: Project }) => (
     <div className="mb-12 md:mb-32 last:mb-0 w-full">
         <div className="text-center mb-10 md:mb-16 px-4">
             <h3 className="text-xl xs:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-4">
-                Case: {project.name}
+                Projeto: {project.name}
             </h3>
             <p className="text-slate-400 text-sm xs:text-base md:text-lg max-w-2xl mx-auto break-words">
                 {project.description}

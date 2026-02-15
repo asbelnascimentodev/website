@@ -129,7 +129,7 @@ const App = () => {
                         </a>
                     </Button>
                     <Button asChild variant="outline" className="w-full xs:w-auto h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-xl px-6">
-                        <a href="https://pdflink.to/resumeasbel/" target="_blank">
+                        <a href="https://pdflink.to/b929d593/" target="_blank">
                             PT Currículo
                         </a>
                     </Button>
