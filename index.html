@@ -1,84 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ASBEL NASCIMENTO | Portfólio</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
     <script type="module" src="/src/main.tsx"></script>
     <script src="/java.js" defer></script>
-</head>
+  </head>
 
-<body>
-    <header id="main-header">
-        <div class="header-nav">
-            <div class="brand">
-                <a href="#home">ASBEL<span>.</span></a>
-            </div>
-            <nav class="nav-links">
-                <a href="#sobre">Sobre</a>
-                <a href="#skills">Skills</a>
-                <a href="#certificados">Certificações</a>
-                <a href="#projetos">Design</a>
-                <a href="#linkedin">LinkedIn</a>
-                <a href="#projetos-web">Projetos Web</a>
-            </nav>
-        </div>
-    </header>
+  <body>
+    <div id="root"></div>
+    <div class="scanline"></div>
+    <div id="dynamic-background"></div>
 
     <div id="dynamic-background"></div>
 
-    <section id="home" class="secao">
-        <div id="root"></div>
-    </section>
+    <div id="about-root" style="display: none"></div>
+    <div id="marquee-root" style="display: none"></div>
+    <div id="skills-root" style="display: none"></div>
+    <div id="certificados-root" style="display: none"></div>
+    <div id="designs-root" style="display: none"></div>
+    <div id="linkedin-root" style="display: none"></div>
 
-    <section id="sobre" class="secao">
-        <div id="about-root"></div>
-    </section>
-
-    <div id="marquee-root"></div>
-
-    <section id="skills" class="secao">
-        <div id="skills-root"></div>
-    </section>
-
-    <section id="certificados" class="secao">
-        <div id="certificados-root"></div>
-    </section>
-
-    <section id="projetos" class="secao">
-        <div id="designs-root"></div>
-    </section>
-
-    <section id="linkedin" class="secao">
-        <div id="linkedin-root"></div>
-    </section>
-
-    <section id="projetos-web" class="secao">
-        <h2>Projetos</h2>
-        <div class="galeria-projetos">
-            <div class="calculadora design-item">
-                <a href="/calculator project/calculator.html" target="_blank">
-                    <img src="/calculator project/iconcalculator.png" alt="Calculadora">
-                </a>
-                <h3>CALCULADORA BÁSICA</h3>
-                <p>HTML, CSS e JavaScript</p>
-            </div>
-            <div class="qrcode design-item">
-                <a href="/qrcode-project/index.html" target="_blank">
-                    <img src="/qrcode-project/QRCODEICON.jpg" alt="Gerador de QR Code">
-                </a>
-                <h3>GERADOR DE QRCODE</h3>
-                <p>Python</p>
-            </div>
+    <section id="projetos-web-legacy" style="display: none">
+      <h2>Projetos</h2>
+      <div class="galeria-projetos">
+        <div class="calculadora design-item">
+          <a href="/calculator project/calculator.html" target="_blank">
+            <img
+              src="/calculator project/iconcalculator.png"
+              alt="Calculadora"
+            />
+          </a>
+          <h3>CALCULADORA BÁSICA</h3>
+          <p>HTML, CSS e JavaScript</p>
         </div>
+        <div class="qrcode design-item">
+          <a href="/qrcode-project/index.html" target="_blank">
+            <img
+              src="/qrcode-project/QRCODEICON.jpg"
+              alt="Gerador de QR Code"
+            />
+          </a>
+          <h3>GERADOR DE QRCODE</h3>
+          <p>Python</p>
+        </div>
+      </div>
     </section>
-
-
-    <footer>
-        <p>&copy; 2025 Asbel Nascimento. Todos os direitos reservados.</p>
-    </footer>
-</body>
-
+  </body>
 </html>

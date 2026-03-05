@@ -67,10 +67,10 @@ const projects: Project[] = [
 const CaseStudy = ({ project }: { project: Project }) => (
     <div className="mb-12 md:mb-32 last:mb-0 w-full">
         <div className="text-center mb-10 md:mb-16 px-4">
-            <h3 className="text-xl xs:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 md:mb-4">
-                Projeto: {project.name}
+            <h3 className="text-xl xs:text-2xl md:text-3xl lg:text-4xl font-orbitron font-bold text-white mb-3 md:mb-4 text-glow-blue uppercase tracking-tight">
+                MISSION: {project.name}
             </h3>
-            <p className="text-slate-400 text-sm xs:text-base md:text-lg max-w-2xl mx-auto break-words">
+            <p className="text-slate-400 text-sm xs:text-base md:text-lg max-w-2xl mx-auto break-words font-exo">
                 {project.description}
             </p>
         </div>
@@ -82,14 +82,14 @@ const CaseStudy = ({ project }: { project: Project }) => (
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="relative group w-full"
+                className="relative group w-full hud-border p-2 bg-black/40"
             >
                 <div className="absolute -top-4 md:-top-6 left-4 md:left-6 z-10">
-                    <span className="bg-slate-800 text-slate-400 text-[10px] md:text-sm font-bold px-3 py-1 rounded-full border border-white/10 shadow-xl">
-                        ANTES
+                    <span className="bg-slate-800 text-slate-400 text-[10px] md:text-xs font-orbitron px-3 py-1 border border-white/10 shadow-xl tracking-widest uppercase">
+                        LEGACY_STATE
                     </span>
                 </div>
-                <div className="rounded-2xl md:rounded-3xl overflow-hidden border border-white/5 bg-slate-900/40 backdrop-blur-sm grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 shadow-2xl">
+                <div className="rounded-none overflow-hidden grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 shadow-2xl">
                     <img
                         src={project.beforeImg}
                         alt={`${project.name} Antes`}
@@ -104,15 +104,15 @@ const CaseStudy = ({ project }: { project: Project }) => (
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative group w-full"
+                className="relative group w-full hud-border p-2 bg-cyber-blue/5"
             >
                 <div className="absolute -top-4 md:-top-6 left-4 md:left-6 z-10">
-                    <span className="bg-sky-500 text-white text-[10px] md:text-sm font-bold px-4 md:px-6 py-1.5 md:py-2 rounded-full border border-sky-400 shadow-[0_0_20px_rgba(14,165,233,0.5)] flex items-center gap-2">
-                        <div className="w-1.5 md:w-2 h-1.5 md:h-2 bg-white rounded-full animate-pulse" />
-                        DEPOIS
+                    <span className="bg-cyber-blue text-black text-[10px] md:text-xs font-orbitron px-4 md:px-6 py-1.5 md:py-2 shadow-neon-blue flex items-center gap-2 tracking-widest uppercase italic">
+                        <div className="w-1.5 md:w-2 h-1.5 md:h-2 bg-black rounded-full animate-pulse" />
+                        UPGRADED_UI
                     </span>
                 </div>
-                <div className="rounded-2xl md:rounded-3xl overflow-hidden border-2 border-sky-400/30 bg-slate-900/60 backdrop-blur-md shadow-[0_0_40px_rgba(14,165,233,0.15)] group-hover:border-sky-400 group-hover:shadow-[0_0_50px_rgba(14,165,233,0.25)] transition-all duration-700">
+                <div className="rounded-none overflow-hidden shadow-[0_0_40px_rgba(1,255,255,0.15)] group-hover:shadow-[0_0_50px_rgba(1,255,255,0.25)] transition-all duration-700">
                     <img
                         src={project.afterImg}
                         alt={`${project.name} Depois`}
@@ -127,30 +127,31 @@ const CaseStudy = ({ project }: { project: Project }) => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="p-5 xs:p-6 md:p-12 rounded-2xl md:rounded-[2.5rem] bg-gradient-to-br from-slate-900/60 to-slate-950/40 border border-white/10 backdrop-blur-xl max-w-4xl mx-auto shadow-2xl w-full"
+            className="p-5 sm:p-8 md:p-12 glass-panel border border-white/10 backdrop-blur-xl max-w-4xl mx-auto shadow-2xl w-full relative overflow-hidden"
         >
-            <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-stretch md:items-center">
+            <div className="absolute top-0 right-0 p-2 text-[8px] font-orbitron text-white/10 uppercase tracking-[0.3em] hidden xs:block">SECURE_ENCRYPTION_v4.2</div>
+            <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-stretch md:items-center">
                 <div className="flex-1">
-                    <h4 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">Destaques do Projeto</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                    <h4 className="text-lg sm:text-xl md:text-2xl font-orbitron font-bold text-white mb-4 md:mb-6 uppercase tracking-wider">PROJECT_HIGHLIGHTS</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
                         {project.improvements.map((item, i) => (
-                            <li key={i} className="flex items-start gap-2.5 text-slate-300">
-                                <div className="mt-1.5 w-1.5 h-1.5 bg-sky-400 rounded-full shrink-0" />
-                                <span className="text-xs xs:text-sm md:text-base leading-snug">{item}</span>
+                            <li key={i} className="flex items-start gap-2 text-slate-300">
+                                <div className="mt-1.5 w-1.5 h-1.5 bg-cyber-blue rounded-full shrink-0 shadow-neon-blue" />
+                                <span className="text-xs sm:text-sm md:text-base leading-snug font-exo">{item}</span>
                             </li>
                         ))}
                     </ul>
                 </div>
                 <div className="flex flex-col gap-3 md:gap-4 shrink-0 w-full md:w-auto">
-                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <a
                             href={project.webCvLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm md:text-base px-6 md:px-8 py-3.5 md:py-4 rounded-xl md:rounded-2xl flex items-center justify-center gap-3 transition-colors border border-white/10 shadow-xl group"
+                            className="w-full bg-cyber-blue hover:bg-white text-black font-orbitron font-bold text-sm md:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-3 transition-all shadow-neon-blue group uppercase italic"
                         >
-                            Ver Currículo Web
-                            <ExternalLink className="w-4 h-4 md:w-5 md:h-5 text-sky-400 group-hover:scale-110 transition-transform" />
+                            ACCESS_WEB_CV
+                            <ExternalLink className="w-4 h-4 md:w-5 md:h-5 text-black group-hover:scale-110 transition-transform" />
                         </a>
                     </motion.div>
                 </div>
@@ -163,12 +164,12 @@ export const LinkedInProjects = () => {
     return (
         <div className="w-full py-24 flex flex-col items-center">
             <div className="max-w-7xl mx-auto px-4 w-full">
-                <div className="text-center mb-24 px-4">
-                    <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-sky-400/50">
-                        Projetos LinkedIn
+                <div className="text-center mb-12 md:mb-24 px-4">
+                    <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-orbitron font-black text-white mb-6 md:mb-8 text-glow-blue uppercase tracking-tighter">
+                        CONSULTANCY_LOGS
                     </h2>
-                    <div className="h-1.5 w-32 bg-sky-500 mx-auto rounded-full mb-8 shadow-[0_0_20px_rgba(14,165,233,0.6)]" />
-                    <p className="text-slate-400 text-xl max-w-3xl mx-auto font-medium">
+                    <div className="h-1 w-20 md:w-32 bg-cyber-blue mx-auto mb-6 md:mb-8 shadow-neon-blue" />
+                    <p className="text-slate-400 text-sm sm:text-lg md:text-xl max-w-3xl mx-auto font-exo">
                         Consultoria estratégica transformando perfis comuns em máquinas de atração de oportunidades e autoridade profissional.
                     </p>
                 </div>

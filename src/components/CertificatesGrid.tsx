@@ -31,31 +31,29 @@ const CertificateCard = ({ certificate, index }: { certificate: Certificate; ind
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            whileHover={{ scale: 1.02, y: -5 }}
-            className="group relative bg-slate-900/40 backdrop-blur-sm border border-white/10 rounded-2xl p-4 xs:p-5 md:p-6 transition-all duration-300 hover:bg-slate-800/60 hover:border-sky-400/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] flex flex-col h-full cursor-pointer"
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="group relative bg-black/40 backdrop-blur-sm border border-cyber-green/20 p-4 xs:p-5 md:p-6 transition-all duration-300 hover:bg-cyber-green/5 hover:border-cyber-green/60 hover:shadow-[0_0_20px_rgba(5,255,161,0.2)] flex flex-col h-full cursor-pointer hud-border"
             onClick={() => window.open(certificate.href, '_blank')}
         >
             <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <ExternalLink className="w-4 h-4 text-sky-400" />
+                <ExternalLink className="w-4 h-4 text-cyber-green" />
             </div>
 
             <div className="mb-3 xs:mb-4">
-                <div className="w-8 h-8 xs:w-10 xs:h-10 rounded-lg xs:rounded-xl bg-sky-400/10 flex items-center justify-center mb-3 xs:mb-4 transition-colors duration-300 group-hover:bg-sky-400/20">
-                    <Award className="w-4 h-4 xs:w-5 xs:h-5 text-sky-400" />
+                <div className="w-8 h-8 xs:w-10 xs:h-10 bg-cyber-green/10 flex items-center justify-center mb-3 xs:mb-4 transition-colors duration-300 group-hover:bg-cyber-green/20">
+                    <Award className="w-4 h-4 xs:w-5 xs:h-5 text-cyber-green" />
                 </div>
             </div>
 
-            <h3 className="text-white font-bold text-sm xs:text-base md:text-lg leading-tight mb-2 group-hover:text-sky-400 transition-colors duration-300 relative inline-block">
+            <h3 className="text-white font-orbitron font-bold text-sm xs:text-base md:text-lg leading-tight mb-2 group-hover:text-cyber-green transition-colors duration-300 relative inline-block uppercase italic tracking-tight">
                 {certificate.title}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-sky-400 transition-all duration-300 group-hover:w-full"></span>
             </h3>
 
-            <p className="text-slate-400 text-[10px] xs:text-xs md:text-sm font-medium uppercase tracking-wider mt-auto">
-                {certificate.institution}
+            <p className="text-slate-500 font-orbitron text-[10px] xs:text-xs md:text-sm font-medium uppercase tracking-[0.2em] mt-auto">
+                ISSUER: {certificate.institution}
             </p>
 
-            {/* Subtle Glow effect on hover */}
-            <div className="absolute inset-0 bg-sky-400/0 rounded-2xl group-hover:bg-sky-400/5 transition-colors duration-500 -z-10 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 p-1 text-[6px] font-orbitron text-cyber-green/20">VALID_AUTH_ID_0x{certificate.id}</div>
         </motion.div>
     );
 };

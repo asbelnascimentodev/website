@@ -1,18 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Lenis from "lenis";
 import { GradualSpacing } from "@/components/ui/gradual-spacing";
-import { TextGradientScroll } from "@/components/ui/text-gradient-scroll";
 import { MarqueeAnimation } from "@/components/ui/marquee-effect";
-import { motion } from "framer-motion";
-import { Linkedin, Instagram, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Linkedin, Instagram, ChevronRight, Menu, X, Rocket, Terminal, Cpu, Layout } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { InteractiveSkills } from "@/components/InteractiveSkills";
 import { CertificatesGrid } from "@/components/CertificatesGrid";
 import { DesignCarousel } from "@/components/DesignCarousel";
 import { LinkedInProjects } from "@/components/LinkedInProjects";
+import { ParticleBackground } from "@/components/ParticleBackground";
 
 const App = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
     const skillsRoot = document.getElementById("skills-root");
     const aboutRoot = document.getElementById("about-root");
     const marqueeRoot = document.getElementById("marquee-root");
@@ -39,29 +42,25 @@ const App = () => {
 
         requestAnimationFrame(raf);
 
-        // Handle internal links in index.html and public/java.js
-        // We can let Lenis handle them by listening to clicks or just using lenis.scrollTo
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
         const handleAnchorClick = (e: MouseEvent) => {
             const target = e.target as HTMLElement;
             const anchor = target.closest('a');
             if (anchor && anchor.hash && anchor.origin === window.location.origin) {
                 const targetId = anchor.hash;
-                const targetElement = document.querySelector(targetId);
+                const targetElement = document.querySelector(targetId === '#home' ? '#root' : targetId);
 
                 if (targetElement) {
                     e.preventDefault();
-
-                    // Add animation effect from java.js
-                    if (targetElement.classList.contains('secao')) {
-                        document.querySelectorAll('.secao').forEach(sec => sec.classList.remove('animar-secao'));
-                        targetElement.classList.add('animar-secao');
-                        setTimeout(() => {
-                            targetElement.classList.remove('animar-secao');
-                        }, 1000);
-                    }
-
+                    setIsMenuOpen(false);
                     lenis.scrollTo(targetElement as HTMLElement, {
                         duration: 1.5,
+                        offset: -100,
                         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
                     });
                 }
@@ -72,158 +71,284 @@ const App = () => {
 
         return () => {
             lenis.destroy();
+            window.removeEventListener('scroll', handleScroll);
             document.removeEventListener('click', handleAnchorClick);
         };
     }, []);
 
+    const navLinks = [
+        { name: "Início", href: "#home" },
+        { name: "Sobre", href: "#sobre" },
+        { name: "Skills", href: "#skills" },
+        { name: "Certificações", href: "#certificados" },
+        { name: "Design", href: "#projetos" },
+        { name: "LinkedIn", href: "#linkedin" },
+    ];
+
     return (
-        <div className="w-full">
-            {/* Hero Section */}
-            <div className="flex flex-col items-center justify-center w-full min-h-[60vh] md:min-h-[80vh] px-4 py-16 md:py-24 mx-auto overflow-hidden">
-                <h1 className="text-xl xs:text-2xl md:text-3xl lg:text-4xl text-white font-medium mb-4 opacity-80 text-center">
-                    Olá, eu sou
-                </h1>
-                <div className="w-full flex justify-center py-4">
-                    <GradualSpacing
-                        text="ASBEL NASCIMENTO"
-                        className="text-[8vw] xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter"
-                    />
+        <div className="w-full min-h-screen bg-cyber-dark text-slate-200 font-inter selection:bg-cyber-blue selection:text-black">
+            <ParticleBackground />
+            
+            {/* HUD Overlay - Elements positioned in corners */}
+            <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+                {/* HUD Corners - Adjusted size for mobile */}
+                <div className="hud-corner hud-corner-tl !w-6 !h-6 sm:!w-15 sm:!h-15 border-cyber-blue" />
+                <div className="hud-corner hud-corner-tr !w-6 !h-6 sm:!w-15 sm:!h-15 border-cyber-blue" />
+                <div className="hud-corner hud-corner-bl !w-6 !h-6 sm:!w-15 sm:!h-15 border-cyber-blue" />
+                <div className="hud-corner hud-corner-br !w-6 !h-6 sm:!w-15 sm:!h-15 border-cyber-blue" />
+                
+                {/* Decorative Side Elements - Hidden on small mobile */}
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 flex flex-col gap-8 opacity-20 hidden md:flex">
+                    <div className="w-1 h-32 bg-cyber-blue/30" />
+                    <div className="text-[10px] font-orbitron -rotate-90 origin-left text-cyber-blue">SYS_READY</div>
                 </div>
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.2, duration: 0.8 }}
-                    className="flex flex-col xs:flex-row gap-4 xs:gap-6 mt-10 justify-center items-center w-full"
-                >
-                    <Button asChild variant="outline" className="w-full xs:w-auto min-w-[200px] h-12 text-sm xs:text-base font-bold bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full px-8">
-                        <a href="#sobre">
-                            Saiba Mais Sobre Mim
-                        </a>
-                    </Button>
-
-                    <div className="flex gap-4 items-center">
-                        <Button asChild variant="outline" size="icon" className="w-12 h-12 bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full">
-                            <a href="https://www.linkedin.com/in/asbeldev/" target="_blank" rel="noopener noreferrer">
-                                <Linkedin className="w-5 h-5" />
-                            </a>
-                        </Button>
-                        <Button asChild variant="outline" size="icon" className="w-12 h-12 bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full">
-                            <a href="https://www.instagram.com/eubebel.ofc/" target="_blank" rel="noopener noreferrer">
-                                <Instagram className="w-5 h-5" />
-                            </a>
-                        </Button>
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.4, duration: 0.8 }}
-                    className="flex flex-col xs:flex-row gap-4 mt-6 justify-center items-center w-full"
-                >
-                    <Button disabled variant="outline" className="w-full xs:w-auto h-10 text-xs font-bold bg-slate-800/50 border-white/10 text-slate-500 cursor-not-allowed rounded-xl px-6">
-                        EN Resume (Em Andamento)
-                    </Button>
-                    <Button asChild variant="outline" className="w-full xs:w-auto h-10 text-xs font-bold bg-sky-400/10 border-sky-400/20 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-xl px-6">
-                        <a href="https://pdflink.to/b929d593/" target="_blank">
-                            PT Currículo
-                        </a>
-                    </Button>
-                </motion.div>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-8 opacity-20 hidden md:flex">
+                    <div className="text-[10px] font-orbitron rotate-90 origin-right text-cyber-blue">DATA_LINK</div>
+                    <div className="w-1 h-32 bg-cyber-blue/30" />
+                </div>
             </div>
+            {/* Navigation */}
+            <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${scrolled ? 'py-4' : 'py-8'}`}>
+                <div className="container mx-auto px-6">
+                    <nav className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'bg-black/60 backdrop-blur-md border border-white/10 p-3 rounded-2xl shadow-neon-blue' : ''}`}>
+                        <a href="#home" className="text-2xl font-orbitron tracking-tighter text-white group">
+                            ASBEL<span className="text-cyber-blue group-hover:animate-pulse">_</span>
+                        </a>
 
-            {/* Content Sections - Using createPortal to map to index.html roots but ensuring fluid width */}
-            {aboutRoot && createPortal(
-                <div className="w-full max-w-[1200px] mx-auto px-4 py-8 md:py-16">
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
-                        Sobre Mim
-                    </h2>
-                    <div className="bg-slate-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-12 shadow-2xl max-h-[500px] overflow-y-auto custom-scrollbar w-full">
-                        <div className="text-base md:text-xl leading-relaxed text-slate-200 font-medium whitespace-pre-line text-justify break-words">
-                            Meu nome é Asbel Nascimento, Atualmente gerencio uma rede social do instagram de BOLOS ("didi_bolosofc"), com alguns videos e posts feito por mim. Também sou um Estudante de Desenvolvimento Web Júnior com grande interesse por tecnologia, design e inovação. Atualmente, possuo conhecimentos básicos em HTML, CSS, JavaScript, UX Design, python e Redes de Computadores e Lógica de Programação — áreas que venho aprimorando constantemente por meio de cursos e prática diária.
-                            {"\n\n"}
-                            Tenho um inglês intermediário, o que me permite me comunicar bem e manter conversas com estrangeiros sobre diversos assuntos, especialmente voltados à tecnologia.
-                            {"\n\n"}
-                            Além da área técnica, também sou apaixonado por música! Toco instrumentos de percussão como pandeiro, tan tan, reco-reco e até arrisco um pouco no cavaquinho 🎶. A música me ensinou ritmo, foco e disciplina — qualidades que aplico também nos meus projetos e estudos.
-                            {"\n\n"}
-                            Atualmente, busco uma oportunidade em uma empresa onde eu possa evoluir profissionalmente, aplicar meu conhecimento técnico, e principalmente aprender na prática com uma equipe experiente, aprimorando minhas habilidades dia após dia.
-                            {"\n\n"}
-                            Sou curioso, dedicado e gosto de aprender com desafios — acredito que cada projeto é uma nova chance de crescimento pessoal e profissional. 🚀
+                        {/* Desktop Nav */}
+                        <div className="hidden lg:flex items-center gap-8">
+                            {navLinks.map((link) => (
+                                <a 
+                                    key={link.name} 
+                                    href={link.href}
+                                    className="text-xs font-orbitron text-slate-400 hover:text-cyber-blue transition-colors tracking-widest uppercase"
+                                >
+                                    {link.name}
+                                </a>
+                            ))}
+                            <Button asChild className="bg-cyber-blue text-black font-orbitron text-xs hover:bg-white transition-all shadow-neon-blue rounded-none px-6">
+                                <a href="https://pdflink.to/b929d593/" target="_blank" rel="noopener noreferrer">RESUME</a>
+                            </Button>
+                        </div>
+
+                        {/* Mobile Toggle */}
+                        <button 
+                            className="lg:hidden p-2 text-white"
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                        >
+                            {isMenuOpen ? <X /> : <Menu />}
+                        </button>
+                    </nav>
+                </div>
+
+                {/* Mobile Menu */}
+                <AnimatePresence>
+                    {isMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, x: '100%' }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: '100%' }}
+                            className="fixed inset-0 bg-cyber-dark z-[101] flex flex-col items-center justify-center gap-8 lg:hidden"
+                        >
+                            <button className="absolute top-8 right-8 text-white" onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
+                                <X size={32} />
+                            </button>
+                            {navLinks.map((link) => (
+                                <a 
+                                    key={link.name} 
+                                    href={link.href}
+                                    className="text-2xl font-orbitron text-white hover:text-cyber-blue"
+                                >
+                                    {link.name}
+                                </a>
+                            ))}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </header>
+
+            {/* Hero Section */}
+            <section id="home" className="relative w-full min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden pt-20">
+                <div className="absolute inset-0 bg-grid-white/[0.02] -z-10" />
+                
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1 }}
+                    className="relative text-center"
+                >
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyber-blue/30 bg-cyber-blue/10 text-cyber-blue text-[10px] font-orbitron mb-6 animate-pulse">
+                        <Terminal size={14} />
+                        SYSTEMS STATUS: OPTIMAL
+                    </div>
+                    
+                    <h1 className="text-sm md:text-xl text-cyber-blue font-orbitron tracking-[1em] mb-4 opacity-70">
+                        WELCOME_PROTOCOL
+                    </h1>
+                    
+                    <div className="mb-8">
+                        <GradualSpacing
+                            text="ASBEL NASCIMENTO"
+                            className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-orbitron font-black text-white leading-none tracking-tighter"
+                        />
+                    </div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.8 }}
+                        className="flex flex-col md:flex-row gap-6 justify-center items-center"
+                    >
+                        <Button asChild className="h-14 px-10 bg-transparent border-2 border-cyber-blue text-cyber-blue font-orbitron hover:bg-cyber-blue hover:text-black transition-all shadow-neon-blue group">
+                            <a href="#sobre">
+                                INITIALIZE MISSION
+                                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                            </a>
+                        </Button>
+                        
+                        <div className="flex gap-4">
+                            <Button asChild variant="outline" size="icon" className="w-12 h-12 rounded-none border-cyber-purple text-cyber-purple hover:bg-cyber-purple hover:text-white transition-all shadow-neon-purple shadow-none hover:shadow-neon-purple">
+                                <a href="https://www.linkedin.com/in/asbeldev/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                    <Linkedin className="w-5 h-5" />
+                                </a>
+                            </Button>
+                            <Button asChild variant="outline" size="icon" className="w-12 h-12 rounded-none border-cyber-pink text-cyber-pink hover:bg-cyber-pink hover:text-white transition-all shadow-none hover:shadow-neon-pink">
+                                <a href="https://www.instagram.com/eubebel.ofc/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                    <Instagram className="w-5 h-5" />
+                                </a>
+                            </Button>
+                        </div>
+                    </motion.div>
+                </motion.div>
+
+                {/* Scroll Indicator */}
+                <motion.div 
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                >
+                    <span className="text-[10px] font-orbitron text-slate-500 tracking-widest uppercase">Scroll to Pilot</span>
+                    <div className="w-[1px] h-12 bg-gradient-to-b from-cyber-blue to-transparent" />
+                </motion.div>
+            </section>
+
+            {/* Content Sections */}
+            <div className="relative z-10 space-y-32 pb-32">
+                <section id="sobre" className="container mx-auto px-4 md:px-6 max-w-5xl">
+                    <div className="relative p-6 sm:p-8 md:p-16 glass-panel hud-border shadow-2xl">
+                        <div className="absolute top-0 right-0 p-4 text-[10px] font-orbitron text-cyber-blue/40 hidden xs:block">
+                            UID: 0x48656c6c6f
+                        </div>
+                        <div className="flex flex-col gap-6 md:gap-10">
+                            <div className="space-y-4">
+                                <h2 className="text-xl sm:text-2xl md:text-4xl font-orbitron font-bold text-white tracking-tight">MISSION_DATA</h2>
+                                <div className="h-1 w-20 bg-cyber-blue shadow-neon-blue" />
+                            </div>
+                            <p className="text-sm sm:text-lg md:text-xl text-slate-300 leading-relaxed font-exo">
+                                Entusiasta por tecnologia, <span className="text-cyber-blue font-bold">Desenvolvedor Full Stack</span> e Designer em constante evolução. Minha jornada é marcada pela fusão entre estética e funcionalidade, transformando linhas de código em experiências imersivas de alto impacto através de um Game UI Design agressivo e moderno.
+                            </p>
+                            <div className="inline-block px-4 py-2 bg-cyber-blue/10 border-l-4 border-cyber-blue mt-4 w-fit">
+                                <span className="text-xs font-orbitron text-cyber-blue uppercase tracking-widest">Target: Full-Stack Mastery</span>
+                            </div>
                         </div>
                     </div>
-                </div>,
-                aboutRoot
-            )}
+                </section>
 
-            {marqueeRoot && createPortal(
-                <div className="w-full flex flex-col gap-0 py-8 overflow-hidden">
-                    <MarqueeAnimation
-                        direction="left"
-                        baseVelocity={-2}
-                        className="text-sky-400/20 py-2 border-y border-sky-400/5 bg-sky-950/20"
-                    >
-                        ASBEL NASCIMENTO
-                    </MarqueeAnimation>
-                    <MarqueeAnimation
-                        direction="right"
-                        baseVelocity={-2}
-                        className="text-white/10 py-2 border-b border-white/5 bg-white/5"
-                    >
-                        AI & IT STUDENT
-                    </MarqueeAnimation>
-                </div>,
-                marqueeRoot
-            )}
+                <div id="marquee-root" className="my-20">
+                    <div className="w-full flex flex-col gap-0 py-8 overflow-hidden bg-black/40 border-y border-white/5">
+                        <MarqueeAnimation
+                            direction="left"
+                            baseVelocity={-2}
+                            className="text-cyber-blue/30 font-orbitron text-6xl tracking-tighter py-4"
+                        >
+                            ASBEL NASCIMENTO // FRONTEND DEVELOPER // UX DESIGNER //
+                        </MarqueeAnimation>
+                        <MarqueeAnimation
+                            direction="right"
+                            baseVelocity={-2}
+                            className="text-cyber-purple/20 font-orbitron text-6xl tracking-tighter py-4"
+                        >
+                            CREATIVITY // TECHNOLOGY // INNOVATION // FUTURE //
+                        </MarqueeAnimation>
+                    </div>
+                </div>
 
+                {/* Skills */}
+                <section id="skills" className="container mx-auto px-6">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-6xl font-orbitron font-black text-white mb-4 text-glow-blue">TECH_STACK</h2>
+                        <div className="w-24 h-1 bg-cyber-blue mx-auto" />
+                    </div>
+                    <InteractiveSkills />
+                </section>
 
-            {linkedinRoot && createPortal(
-                <div className="w-full px-4">
+                {/* LinkedIn */}
+                <div id="linkedin" className="scroll-mt-24">
                     <LinkedInProjects />
-                </div>,
-                linkedinRoot
-            )}
+                </div>
 
-            {designsRoot && createPortal(
-                <div className="w-full px-4 py-16">
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
-                        Meus Trabalhos de Design
-                    </h2>
-                    <p className="text-slate-400 text-center mb-8 md:mb-12 max-w-2xl mx-auto px-4">
-                        Uma seleção de projetos visuais focados em identidade, social media e design esportivo.
-                    </p>
-                    <DesignCarousel />
+                {/* Designs */}
+                <section id="projetos" className="container mx-auto px-6 overflow-hidden">
+                    <div className="text-center mb-16">
+                        <div className="flex items-center justify-center gap-4 mb-4">
+                            <Layout className="text-cyber-pink" />
+                            <h2 className="text-4xl md:text-6xl font-orbitron font-black text-white text-glow-pink uppercase">Design_Core</h2>
+                        </div>
+                        <p className="text-slate-400 font-exo text-lg max-w-2xl mx-auto">
+                            Explorações de identidade visual, social media e interfaces focadas em performance estética.
+                        </p>
+                    </div>
+                    
+                    <div className="hud-border p-4 bg-black/40">
+                        <DesignCarousel />
+                    </div>
 
-                    <div className="mt-12 md:mt-16 text-center px-4">
-                        <Button asChild variant="outline" className="w-full xs:w-auto min-w-[240px] h-12 text-sm xs:text-base font-bold bg-transparent border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 transition-all rounded-full group px-8">
-                            <a href="https://www.instagram.com/asbeldsgn/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 justify-center">
-                                Ver Portfólio no Instagram
+                    <div className="mt-16 text-center">
+                        <Button asChild className="h-14 px-8 bg-transparent border-2 border-cyber-pink text-cyber-pink font-orbitron hover:bg-cyber-pink hover:text-white transition-all shadow-none hover:shadow-neon-pink group">
+                            <a href="https://www.instagram.com/asbeldsgn/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                                ACCESS_EXTERNAL_REPOSITORY
                                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </a>
                         </Button>
                     </div>
-                </div>,
-                designsRoot
-            )}
+                </section>
 
-            {certificadosRoot && createPortal(
-                <div className="w-full px-4 py-12">
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
-                        Meus Certificados
-                    </h2>
+                {/* Certificados */}
+                <section id="certificados" className="container mx-auto px-6">
+                    <div className="text-center mb-16">
+                        <div className="flex items-center justify-center gap-4 mb-4">
+                            <Cpu className="text-cyber-green" />
+                            <h2 className="text-3xl sm:text-4xl md:text-6xl font-orbitron font-black text-white uppercase text-glow-green">Validation_Logs</h2>
+                        </div>
+                    </div>
                     <CertificatesGrid />
-                </div>,
-                certificadosRoot
-            )}
+                </section>
+            </div>
 
-            {skillsRoot && createPortal(
-                <div className="w-full px-4 py-8">
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 md:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-sky-400">
-                        Minhas Habilidades
-                    </h2>
-                    <InteractiveSkills />
-                </div>,
-                skillsRoot
-            )}
+            {/* Footer */}
+            <footer className="relative z-10 bg-black/80 border-t border-white/10 py-16 px-6">
+                <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+                    <div className="text-center md:text-left">
+                        <div className="text-2xl font-orbitron text-white mb-4">ASBEL<span className="text-cyber-blue">_</span></div>
+                        <p className="text-slate-500 font-exo max-w-xs">
+                            Building the future interface by interface.
+                        </p>
+                    </div>
+                    
+                    <div className="flex gap-4">
+                        {['LinkedIn', 'Instagram', 'Github'].map((social) => (
+                            <a key={social} href="#" className="text-xs font-orbitron text-slate-400 hover:text-cyber-blue transition-colors tracking-widest uppercase px-4 py-2 border border-white/5 bg-white/5">
+                                {social}
+                            </a>
+                        ))}
+                    </div>
+                    
+                    <div className="text-[10px] font-orbitron text-slate-600 tracking-widest text-center md:text-right">
+                        © 2025 ASBEL NASCIMENTO // ALL_RIGHTS_RESERVED // VER_2.0
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 };
