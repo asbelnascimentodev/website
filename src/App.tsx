@@ -245,11 +245,19 @@ const App = () => {
                                 <h2 className="text-xl sm:text-2xl md:text-4xl font-orbitron font-bold text-white tracking-tight">MISSION_DATA</h2>
                                 <div className="h-1 w-20 bg-cyber-blue shadow-neon-blue" />
                             </div>
-                            <p className="text-sm sm:text-lg md:text-xl text-slate-300 leading-relaxed font-exo">
-                                Entusiasta por tecnologia, <span className="text-cyber-blue font-bold">Desenvolvedor Full Stack</span> e Designer em constante evolução. Minha jornada é marcada pela fusão entre estética e funcionalidade, transformando linhas de código em experiências imersivas de alto impacto através de um Game UI Design agressivo e moderno.
-                            </p>
+                            <div className="space-y-6 text-sm sm:text-lg md:text-xl text-slate-300 leading-relaxed font-exo">
+                                <p>
+                                    Meu nome é Asbel Nascimento. Atualmente gerencio uma rede social do Instagram de bolos ("didi_bolosofc"), criando conteúdos estratégicos. Sou um entusiasta de Desenvolvimento Web Júnior, apaixonado por tecnologia e inovação estética.
+                                </p>
+                                <p>
+                                    Domínio de fundamentos em <span className="text-cyber-blue font-bold">HTML, CSS, JavaScript e UX Design</span>, com expansão constante para Python e C#. Minha visão é unir técnica sólida com interfaces que proporcionem experiências memoráveis.
+                                </p>
+                                <p>
+                                    Além do código, a música é minha frequência secundária. Tocar percussão me ensinou o ritmo e a disciplina que aplico hoje em cada linha de comando. Busco integrar equipes experientes onde eu possa acelerar minha evolução e entregar valor real por meio da tecnologia.
+                                </p>
+                            </div>
                             <div className="inline-block px-4 py-2 bg-cyber-blue/10 border-l-4 border-cyber-blue mt-4 w-fit">
-                                <span className="text-xs font-orbitron text-cyber-blue uppercase tracking-widest">Target: Full-Stack Mastery</span>
+                                <span className="text-xs font-orbitron text-cyber-blue uppercase tracking-widest">Protocol: Evolution_In_Progress</span>
                             </div>
                         </div>
                     </div>
