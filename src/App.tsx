@@ -11,6 +11,8 @@ import { CertificatesGrid } from "@/components/CertificatesGrid";
 import { DesignCarousel } from "@/components/DesignCarousel";
 import { LinkedInProjects } from "@/components/LinkedInProjects";
 import { ParticleBackground } from "@/components/ParticleBackground";
+import { QRCodeModule } from "@/components/QRCodeModule";
+import { CalculatorModule } from "@/components/CalculatorModule";
 
 const App = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -81,6 +83,7 @@ const App = () => {
         { name: "Sobre", href: "#sobre" },
         { name: "Skills", href: "#skills" },
         { name: "Certificações", href: "#certificados" },
+        { name: "Sistemas", href: "#sistemas" },
         { name: "Design", href: "#projetos" },
         { name: "LinkedIn", href: "#linkedin" },
     ];
@@ -295,6 +298,37 @@ const App = () => {
                 <div id="linkedin" className="scroll-mt-24">
                     <LinkedInProjects />
                 </div>
+
+                {/* Systems Section */}
+                <section id="sistemas" className="container mx-auto px-6">
+                    <div className="text-center mb-16">
+                        <div className="flex items-center justify-center gap-4 mb-4">
+                            <Terminal className="text-cyber-green" />
+                            <h2 className="text-4xl md:text-6xl font-orbitron font-black text-white text-glow-green uppercase">Systems_Access</h2>
+                        </div>
+                        <p className="text-slate-400 font-exo text-lg max-w-2xl mx-auto">
+                            Utilitários de suporte e ferramentas integradas ao ecossistema de desenvolvimento.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-3 mb-2">
+                                <span className="text-[10px] font-orbitron text-cyber-blue opacity-50 tracking-[0.3em]">MÓDULO_01 //</span>
+                                <span className="text-xs font-orbitron text-white uppercase tracking-wider">GERADOR DE QR CODE</span>
+                            </div>
+                            <QRCodeModule />
+                        </div>
+                        
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-3 mb-2">
+                                <span className="text-[10px] font-orbitron text-cyber-purple opacity-50 tracking-[0.3em]">MÓDULO_02 //</span>
+                                <span className="text-xs font-orbitron text-white uppercase tracking-wider">CALCULADORA TERMINAL</span>
+                            </div>
+                            <CalculatorModule />
+                        </div>
+                    </div>
+                </section>
 
                 {/* Designs */}
                 <section id="projetos" className="container mx-auto px-6 overflow-hidden">
