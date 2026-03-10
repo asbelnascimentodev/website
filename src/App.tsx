@@ -193,7 +193,7 @@ const App = () => {
                     <div className="mb-8">
                         <GradualSpacing
                             text="ASBEL NASCIMENTO"
-                            className="text-[5.5vw] xs:text-[6vw] sm:text-[7vw] md:text-[8vw] lg:text-[11rem] font-orbitron font-black text-white leading-none tracking-tighter whitespace-nowrap"
+                            className="text-[5.5vw] xs:text-[6vw] sm:text-[7vw] md:text-[8vw] lg:text-[7.5rem] xl:text-[9rem] font-orbitron font-black text-white leading-none tracking-tighter whitespace-nowrap"
                         />
                     </div>
 
