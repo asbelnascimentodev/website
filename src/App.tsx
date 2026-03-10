@@ -186,14 +186,14 @@ const App = () => {
                         SYSTEMS STATUS: OPTIMAL
                     </div>
                     
-                    <h1 className="text-[3px] xs:text-[6px] sm:text-xs md:text-xl text-cyber-blue font-orbitron tracking-[0.05em] sm:tracking-[1em] mb-4 opacity-70">
+                    <h1 className="text-[10px] xs:text-sm sm:text-base md:text-2xl text-cyber-blue font-orbitron tracking-[0.05em] sm:tracking-[1em] mb-4 opacity-70">
                         WELCOME_PROTOCOL
                     </h1>
                     
                     <div className="mb-8">
                         <GradualSpacing
                             text="ASBEL NASCIMENTO"
-                            className="text-[4px] xs:text-xs sm:text-4xl md:text-8xl lg:text-9xl font-orbitron font-black text-white leading-none tracking-tighter"
+                            className="text-2xl xs:text-4xl sm:text-6xl md:text-9xl lg:text-[10rem] font-orbitron font-black text-white leading-none tracking-tighter"
                         />
                     </div>
 
